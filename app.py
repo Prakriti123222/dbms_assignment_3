@@ -78,7 +78,7 @@ def student_reg():
         personal_email = userDetails['personal_email'],
         curr_program = userDetails['curr_program'],
         joining_date = userDetails['joining_date'],
-        year_of_graduation = userDetails['year_of_graduation'],
+        # year_of_graduation = userDetails['year_of_graduation'],
         resume = userDetails['resume'],
         major_disc = userDetails['major_disc'],
         minor_disc = userDetails['minor_disc']
@@ -97,17 +97,22 @@ def student_reg():
                 values1 = (person_id,cpi, backlogs, category, gender, dob, experience, personal_email, userDetails['year_of_graduation'][0:4], curr_program, resume, major_disc, minor_disc, joining_date, person_id)
                 cur.execute(sql1, values1)
                 mysql.connection.commit() 
-                print("Data for student inserted successfully")                
+                print("Data for student inserted successfully")          
+                return redirect("/users")        
         
             except mysql.connection.Error as error:
-                print("Failed to insert data into MySQL table: {}".format(error))
+                # print("Failed to insert data into MySQL table: {}".format(error))
                 mysql.connection.rollback()  # Roll back changes in case of error
-                return "An error occurred while inserting data, Error is {}".format(error)
+                # return "An error occurred while inserting data, Error is {}".format(error)
+                error = "{}".format(error)
+                return render_template('login/student.html', value=error)
             
         except mysql.connection.Error as error:
-            print("Failed to insert data into MySQL table: {}".format(error))
+            # print("Failed to insert data into MySQL table: {}".format(error))
             mysql.connection.rollback()  # Roll back changes in case of error
-            return "An error occurred while inserting data, Error is {}".format(error)
+            error = "{}".format(error)
+            return render_template('login/student.html', value=error)
+            # return "An error occurred while inserting data, Error is {}".format(error)
 
         cur.close()
 
