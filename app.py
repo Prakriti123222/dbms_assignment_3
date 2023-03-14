@@ -129,7 +129,23 @@ def student_profile():
     
 @app.route('/student-all-jobs')
 def student_all_jobs():
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM job_profile")
+    if resultValue > 0:
+        jobDetails = cur.fetchall()
+        return render_template('dashboard/all_jobs.html',jobDetails=jobDetails)
     return render_template('dashboard/all_jobs.html')
+
+@app.route('/jobs/<job_id>')
+def show_job_profile(job_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM job_profile WHERE job_id=%s",[job_id])
+    job = cur.fetchone()
+    if job:
+        return render_template('dashboard/one_job_details.html', job=job)
+    else:
+        return "No Job ID exists with this id"
+
     
 @app.route('/student-eligible-jobs')
 def student_eligible_jobs():
