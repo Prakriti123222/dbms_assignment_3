@@ -31,7 +31,7 @@ def login():
 
         if user:
             # successful login, redirect to home page
-            return redirect('/users')
+            return redirect('/student-dashboard')
         else:
             # invalid login, show error message
             error = 'Invalid username or password'
@@ -98,7 +98,7 @@ def student_reg():
                 cur.execute(sql1, values1)
                 mysql.connection.commit() 
                 print("Data for student inserted successfully")          
-                return redirect("/users")        
+                return redirect("/student-dashboard")        
         
             except mysql.connection.Error as error:
                 # print("Failed to insert data into MySQL table: {}".format(error))
@@ -114,10 +114,30 @@ def student_reg():
             return render_template('login/student.html', value=error)
             # return "An error occurred while inserting data, Error is {}".format(error)
 
-        cur.close()
+        # cur.close()
 
     else:  
         return render_template('login/student.html')
+    
+@app.route('/student-dashboard')
+def student_dashboard():
+    return render_template('dashboard/student_view.html')
+    
+@app.route('/student-profile')
+def student_profile():
+    return render_template('dashboard/student-profile.html')
+    
+@app.route('/student-all-jobs')
+def student_all_jobs():
+    return render_template('dashboard/all_jobs.html')
+    
+@app.route('/student-eligible-jobs')
+def student_eligible_jobs():
+    return render_template('dashboard/eligible_jobs.html')
+
+@app.route('/student-applied-jobs')
+def student_applied_jobs():
+    return render_template('dashboard/applied_jobs.html')
     
 @app.route('/users')
 def users():
