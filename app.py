@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from flask_mysqldb import MySQL
 import yaml
 import json
@@ -15,14 +15,14 @@ app.config['MYSQL_DB'] = db['mysql_db']
 
 mysql = MySQL(app)
 
+
 @app.route('/', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
         # Fetch form data
         userDetails = request.form
         user_id = userDetails['user_id']
-        password = userDetails['password']
-
+        password = userDetails['password'] 
         cur = mysql.connection.cursor()
         
         cur.execute("SELECT * FROM person WHERE person_id=%s AND password_hash=%s",(user_id, password))
@@ -59,6 +59,7 @@ def register():
 def student_reg():
     if request.method == 'POST':
         userDetails = request.form
+        
         person_id = userDetails['person_id'],
         first_name = userDetails['first_name'],
         middle_name = userDetails['middle_name'],
@@ -125,6 +126,15 @@ def student_dashboard():
     
 @app.route('/student-profile')
 def student_profile():
+    # cur = mysql.connection.cursor()
+    # print(type(id))
+    # cur.execute("SELECT * FROM student where person_id=%s", (id,))
+    # # cur.execute("SELECT * FROM student where person_id=10000")
+    # students = cur.fetchall()
+    
+    # cur.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=%s and TABLE_NAME=%s ORDER BY ORDINAL_POSITION",("Placement_management_system","student", ))
+    # col_name = list(cur.fetchall())
+    # col_name[0] = ("ID", )
     return render_template('dashboard/student-profile.html')
     
 @app.route('/student-all-jobs')
