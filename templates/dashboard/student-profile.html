@@ -1,140 +1,236 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  .person_details > .row{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .person_details > .row > :first-child{
+    font-weight: bold;
+  }
+</style>
+<section style="background-color: #eee;">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Student Profile</title>
-    <style>
-      body {
-        background-color: #e1ebeb;
-        font-family: 'Times New Roman', Times, serif;
-      }
-      h1 {
-        text-align: center;
-        color: hsl(60, 5%, 4%);
-      }
-      table {
-        margin: auto;
-        border-collapse: collapse;
-        background-color: rgb(21, 192, 149);
-        width: 70%;
-        box-shadow: 0px 0px 20px #2fe947;
-      }
-      th {
-        background-color: #1a8558;
-        color: white;
-        height: 40px;
-        text-align: left;
-        padding-left: 20px;
-        border-top: 1px solid #d9d9d9;
-      }
-      td {
-        height: 35px;
-        border-top: 1px solid #d9d9d9;
-        padding-left: 20px;
-      }
-    </style>
-
-  </head>
-  <body>  
-    <div class="header">
-      <h1>Your Profile</h1>
-    </div>
-
-    <table>
-      <tr>
-        <th>Student ID</th>
-        <td>{{ person[0] }}</td>
-      </tr>
-      <tr>
-        <th>First Name</th>
-        <td>{{ person[1] }}</td>
-      </tr>
-      <tr>
-        <th>Middle name</th>
-        <td>{{ person[2] }}</td>
-      </tr>
-      <tr>
-        <th>Last name</th>
-        <td>{{ person[3] }}</td>
-      </tr>
-      <tr>
-        <th>Contact</th>
-        <td>{{ person[4] }}</td>
-      </tr>
-      <tr>
-        <th>Institute e-mail address</th>
-        <td>{{ person[5] }}</td>
-      </tr>
-      <tr>
-        <th>Personal e-mail</th>
-        <td>{{ student[7] }}</td>
-      </tr>
-      <tr>
-        <th>Nationality</th>
-        <td>{{ person[8] }}</td>
-      </tr>
-      <tr>
-        <th>CPI</th>
-        <td>{{ student[1]}}</td>
-      </tr>
-      <tr>
-        <th>backlogs</th>
-        <td>{{ student[2]}}</td>
-      </tr>
-      <tr>
-        <th>Category</th>
-        <td>{{ student[3]}}</td>
-      </tr>
-      <tr>
-        <th>Gender</th>
-        <td>{{ student[4]}}</td>
-      </tr>
-      <tr>
-        <th>Date of Birth</th>
-        <td>{{ student[5]}}</td>
-      </tr>
-      <tr>
-        <th>Professional Experience</th>
-        <td>{{ student[6]}}</td>
-      </tr>
-      <tr>
-        <th>Year of Graduation</th>
-        <td>{{ student[8]}}</td>
-      </tr>
-      <tr>
-        <th>Current Program</th>
-        <td>{{ student[9]}}</td>
-      </tr>
-      <tr>
-        <th>CV</th>
-        <td>{{ student[10]}}</td>
-      </tr>
-      <tr>
-        <th>Major Disciplines</th>
-        <td>{{ student[11]}}</td>
-      </tr>
-      <tr>
-        <th>Minor Disciplines</th>
-        <td>{{ student[12]}}</td>
-      </tr>
-      <tr>
-        <th>Date of joining </th>
-        <td>{{ student[13]}}</td>
-      </tr>
-    </table>
-
-
-
-
-    <!-- Option 1: Bootstrap Bundle with Popper
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
-
-    
-  </body>
-</html>
+    <div class="row" style="display: flex;">
+      <div class="col-lg-4" style="margin-right: 10rem;">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <div style="display: flex;flex-direction: column;width: max-content;">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              <div class="my-3 d-flex" style="width: max-content;margin: auto;">{{person[1]}}</div>
+            </div>
+            <p class="text-muted mb-1">Student ID: {{person[0]}}</p>
+            <p class="text-muted mb-4">email: {{person[5]}}</p>
+            <!-- <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary">Follow</button>
+              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+            </div> -->
+          </div>
+        </div>
+        <!-- <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fas fa-globe fa-lg text-warning"></i>
+                <p class="mb-0">https://mdbootstrap.com</p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                <p class="mb-0">mdbootstrap</p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                <p class="mb-0">@mdbootstrap</p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                <p class="mb-0">mdbootstrap</p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                <p class="mb-0">mdbootstrap</p>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+      <!-- <hr> -->
+      <div class="col-lg-8" style="display: flex;">
+        <div class="card mb-4">
+          <div class="card-body person_details" style="display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 90vh;">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">First Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{person[1]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Middle Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{person[2]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Last Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{person[3]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Contact</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{person[4]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Institute Email Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{person[5]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Personal Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[7]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Nationality</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{person[8]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Gender</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[4]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Date of birth</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[5]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Category</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[3]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">CPI</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[1]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">backlogs</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[2]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Professional Experience (in months)</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[6]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Year of Graduation</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[6]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Current Program</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[9]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">CV</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[10]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Major Disciplines</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[11]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Minor Disciplines</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[12]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Date of joining</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{student[13]}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+</section>
