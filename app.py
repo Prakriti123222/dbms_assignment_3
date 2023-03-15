@@ -190,11 +190,13 @@ def student_profile(person_id):
     student = cur.fetchone() 
     cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
     address = cur.fetchone() 
+    cur.execute("SELECT * FROM educational_details WHERE person_id=%s",[person_id])
+    education = cur.fetchone() 
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
     if person and student and address:
-        return render_template('dashboard/student-profile.html', person=person, student=student, address=address)
+        return render_template('dashboard/student-profile.html', person=person, student=student, address=address, education=education)
     else:
         return "The student is not present"
     
