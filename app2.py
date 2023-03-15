@@ -155,6 +155,8 @@ def hr_reg():
         group_discussion = userDetails['group_discussion'],
         technical_interviews = userDetails['technical_interviews'],
         hr_interviews = userDetails['hr_interviews'],
+        eligible_minor_disc = userDetails['eligible_minor_disc']
+        eligible_major_disc = userDetails['eligible_major_disc']
         website = userDetails['website'],
         type_of_org = userDetails['type_of_org'],
         industry_sector = userDetails['industry_sector'],
@@ -184,8 +186,8 @@ def hr_reg():
                 return render_template('login/company_rep.html', value=error)
             
             try:
-                sql1 = "INSERT INTO job_profile (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-                values1 = (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews)
+                sql1 = "INSERT INTO job_profile (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews, eligible_minor_disc, eligible_major_disc) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                values1 = (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews, eligible_minor_disc, eligible_major_disc)
                 cur.execute(sql1, values1)
                 mysql.connection.commit() 
                 print("Data for job profile inserted successfully")          
@@ -224,7 +226,59 @@ def hr_reg():
 
     else:  
         return render_template('login/company_rep.html')
-    
+
+@app.route('/administrator-registration', methods=['GET', 'POST'])
+def admin_reg():
+    if request.method == 'POST':
+        userDetails = request.form
+        person_id = userDetails['person_id'],
+        first_name = userDetails['first_name'],
+        middle_name = userDetails['middle_name'],
+        last_name = userDetails['last_name'],
+        country_code = userDetails['country_code'],
+        mobile_number = userDetails['mobile_number'],
+        email_id = userDetails['email_id'],
+        profile_photo = userDetails['profile_photo'],
+        password = userDetails['password'],
+        nationality = userDetails['nationality'],
+        designation = userDetails['designation']
+        x = {"country_code":country_code, "number":mobile_number}
+        cur = mysql.connection.cursor()
+
+        try:
+            sql = "INSERT INTO person(person_id, first_name, middle_name, last_name, mobile_number, email, profile_photo, password_hash, nationality, person_role) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            values = (person_id,first_name, middle_name, last_name, json.dumps(x), email_id, profile_photo, password, nationality, "Admin")
+            cur.execute(sql, values)
+            mysql.connection.commit() 
+            print("Data for admin inserted successfully")
+
+            try:
+                sql1 = "INSERT INTO administrator (person_id, designation, parent_id) VALUES (%s, %s, %s)"
+                values1 = (person_id, designation, person_id)
+                cur.execute(sql1, values1)
+                mysql.connection.commit() 
+                print("Data for admin inserted successfully")          
+                return redirect("/users")  
+            
+            except mysql.connection.Error as error:
+                # print("Failed to insert data into MySQL table: {}".format(error))
+                mysql.connection.rollback()  # Roll back changes in case of error
+                # return "An error occurred while inserting data, Error is {}".format(error)
+                error = "{}".format(error)
+                return render_template('login/admin.html', value=error)
+            
+        except mysql.connection.Error as error:
+            # print("Failed to insert data into MySQL table: {}".format(error))
+            mysql.connection.rollback()  # Roll back changes in case of error
+            error = "{}".format(error)
+            return render_template('login/admin.html', value=error)
+            # return "An error occurred while inserting data, Error is {}".format(error)
+
+        cur.close()
+
+    else:  
+        return render_template('login/admin.html')
+                    
 @app.route('/users')
 def users():
     cur = mysql.connection.cursor()

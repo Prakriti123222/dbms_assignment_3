@@ -159,10 +159,22 @@ def student_all_jobs():
 @app.route('/jobs/<job_id>')
 def show_job_profile(job_id):
     cur = mysql.connection.cursor()
+
     cur.execute("SELECT * FROM job_profile WHERE job_id=%s",[job_id])
     job = cur.fetchone()
     if job:
-        return render_template('dashboard/one_job_details.html', job=job)
+        cur.execute("SELECT * FROM company_details WHERE job_id=%s",[job_id])
+        company = cur.fetchone()
+        if company:
+            cur.execute("select * from prog_details where job_id=%s",[job_id])
+            details = cur.fetchall()
+            print(details)
+            if details:
+                return render_template('dashboard/one_job_details.html', job=job, company=company, details=details)
+            else:
+                return render_template('dashboard/one_job_details.html', job=job, company=company)
+        else:
+            return "not mapped to a comapny"
     else:
         return "No Job ID exists with this id"
 
