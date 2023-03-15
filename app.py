@@ -35,7 +35,7 @@ def login():
         if user:
             # successful login, redirect to home page
             print(user[9])
-            if (user[9]=="student"):
+            if (user[9]=="student" or user[9]=="Student"):
                 return redirect('/student-dashboard/'+str(user_id))
             else:
                 return "you are either company rep or admin or an unregistered student"
@@ -97,6 +97,7 @@ def student_reg():
             values = (person_id,first_name, middle_name, last_name, json.dumps(x), email_id, profile_photo, password, nationality, "Student")
             cur.execute(sql, values)
             mysql.connection.commit() 
+            # print(person_id)
             print("Data for person inserted successfully")                
 
             try:
@@ -104,8 +105,8 @@ def student_reg():
                 values1 = (person_id,cpi, backlogs, category, gender, dob, experience, personal_email, userDetails['year_of_graduation'][0:4], curr_program, resume, major_disc, minor_disc, joining_date, person_id)
                 cur.execute(sql1, values1)
                 mysql.connection.commit() 
-                print("Data for student inserted successfully")          
-                return redirect("/student-dashboard/"+str(person_id))      
+                print("Data for student inserted successfully")   
+                return redirect('/student-dashboard/'+str(person_id[0]))      
         
             except mysql.connection.Error as error:
                 # print("Failed to insert data into MySQL table: {}".format(error))
@@ -132,6 +133,7 @@ def student_dashboard(person_id):
     
 @app.route('/student-profile/<person_id>')
 def student_profile(person_id):
+    print(person_id)
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
     person = cur.fetchone()
