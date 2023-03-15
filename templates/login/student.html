@@ -162,9 +162,19 @@
         <div class="row g-2">
             <!-- add a dropdown for curr program -->
             <div class="form-outline flex-fill mb-0 col-lg-6">
-                <input type="text" id="form3Example3c" class="form-control" name="major_disc" required />
+                <input type="text" id="form3Example3c" class="form-control" name="major_discipline" required />
                 <label class="form-label" for="form3Example3c">Major Disciplines <span style="color:red">*</span></label>
             </div>
+            
+                <input type="checkbox" id="mechanical" name="major_discipline[]" value="mechanical">
+                <label for="mechanical">Mechanical Engineering</label><br>
+
+                <input type="checkbox" id="electrical" name="major_discipline[]" value="electrical">
+                <label for="electrical">Electrical Engineering</label><br>
+
+                <input type="checkbox" id="computer" name="major_discipline[]" value="computer">
+                <label for="computer">Computer Engineering</label><br>
+
 
             <div class="form-outline flex-fill mb-0 col-lg-6">
                 <input type="text" id="form3Example3c" class="form-control" name="minor_disc" required />
