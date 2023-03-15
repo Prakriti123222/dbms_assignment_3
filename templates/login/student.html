@@ -19,6 +19,9 @@
     <form class="mx-1 mx-md-4" method="POST" style="color: #FFF">
         <div class="card">
             <div class = "card-body" style="background-color: #00586C" padding = "16px">
+                <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
+                    Personal Details
+                </p>
         <div class="row g-2">
             <div class="col-lg-6">
                 <input type="number" id="form3Example3c" class="form-control" name="person_id" required />
@@ -81,10 +84,16 @@
                 <input type="number" step="any" id="form3Example3c" class="form-control" name="cpi" required />
                 <label class="form-label" for="form3Example3c">CPI <span style="color:red">*</span></label>
             </div>
-
             <!-- convert into checkbox -->
-            <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="number" id="form3Example3c" class="form-control" name="backlogs" value="0" />
+            <div class="form-outline flex-fill mb-0 col-lg-4" style="margin:0" style="padding:0">
+                <label>
+                    <input type = 'radio' name="backlogs">
+                    Yes
+                </label>
+                <label>
+                    <input type = 'radio' name="backlogs">
+                    No
+                </label><br>
                 <label class="form-label" for="form3Example3c">Backlog(s)</label>
             </div>
         </div>
@@ -96,8 +105,16 @@
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-3">
-                <input type="text" id="form3Example3c" class="form-control" name="category" required />
-                <label class="form-label" for="form3Example3c">Category <span style="color:red">*</span></label>
+                <!-- <input type="text" id="form3Example3c" class="form-control" name="category" required /> -->
+                <select class="form-select" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="EWS">EWS</option>
+                    <option value="OBC">OBC</option>
+                    <option value="PWD">PWD</option>
+                    <option value="ST">ST</option>
+                    <option value="SC">SC</option>
+                  </select>
+                  <label class="form-label" for="form3Example3c">Category <span style="color:red">*</span></label>
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-3">
@@ -156,6 +173,52 @@
         </div>
     </div>
     </div>
+
+    <br><br>
+
+    <div class="card">
+        <div class = "card-body" style="background-color: #00586C" padding = "16px">
+            <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
+                Educational Details
+            </p>
+    <div class="row g-2">
+        <div class="col-lg-6">
+            <input type="text" id="form3Example3c" class="form-control" name="board_for_tenth" required />
+            <label class="form-label" for="form3Example3c">Board of Tenth<span style="color:red">*</span></label>
+        </div>
+
+        <div class="col-lg-6">
+            <input type="text" id="form3Example3c" class="form-control" name="board_of_twelfth" required />
+            <label class="form-label" for="form3Example3c">Board of Twelth<span style="color:red">*</span></label>
+        </div>
+    </div>
+
+    <div class="row g-2">
+        <div class="col-lg-6">
+            <input type="number" id="form3Example3c" class="form-control" name="tenth_percentage " />
+            <label class="form-label" for="form3Example3c">Tenth Percentage <span style="color:red">*</span></label>
+        </div>
+
+        <div class="col-lg-6">
+            <input type="number" id="form3Example3c" class="form-control" name="twelfth_percentage " />
+            <label class="form-label" for="form3Example3c">Twelth Percentage <span style="color:red">*</span></label>
+        </div>
+    </div>
+
+
+    <div class="row g-2">
+        <div class="col-lg-4">
+            <input type="text" id="form3Example3c" class="form-control" name="competitive_exam_name " required />
+            <label class="form-label" for="form3Example3c">Competetive Exam Name <span style="color:red">*</span></span></label>
+        </div>
+
+        <div class="col-lg-4">
+            <input type="int" id="form3Example3c" class="form-control" name="competitive_exam_rank" required />
+            <label class="form-label" for="form3Example3c">Competetive Exam Rank <span style="color:red">*</span></label>
+        </div>
+    </div>
+</div>
+</div>
 
         <div class="form-check d-flex justify-content-center mb-5">
             <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
