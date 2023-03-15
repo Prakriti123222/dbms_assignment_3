@@ -168,6 +168,15 @@ def student_profile(person_id):
     else:
         return "The student is not present"
     
+
+@app.route('/admin-add-company')
+def admin_add_company():
+    return render_template('dashboard/add_company.html')
+
+@app.route('/edit-company-status')
+def edit_company_status():
+    return render_template('dashboard/edit-company-status.html')
+
 @app.route('/student-all-jobs')
 def student_all_jobs():
     cur = mysql.connection.cursor()
