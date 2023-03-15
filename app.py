@@ -150,11 +150,13 @@ def admin_profile(person_id):
     person = cur.fetchone()
     cur.execute("SELECT * FROM administrator WHERE person_id=%s",[person_id])
     admin = cur.fetchone() 
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
-    if person and admin:
-        return render_template('dashboard/admin-profile.html', person=person, admin=admin)
+    if person and admin and address:
+        return render_template('dashboard/admin-profile.html', person=person, admin=admin, address=address)
     else:
         return "The admin is not present"
     
@@ -168,8 +170,10 @@ def company_profile(person_id):
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
-    if person and hr:
-        return render_template('dashboard/company-profile.html', person=person, hr=hr)
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
+    if person and hr and address:
+        return render_template('dashboard/company-profile.html', person=person, hr=hr, address=address)
     else:
         return "The hr is not present"
 
@@ -184,11 +188,13 @@ def student_profile(person_id):
     person = cur.fetchone()
     cur.execute("SELECT * FROM student WHERE person_id=%s",[person_id])
     student = cur.fetchone() 
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
-    if person and student:
-        return render_template('dashboard/student-profile.html', person=person, student=student)
+    if person and student and address:
+        return render_template('dashboard/student-profile.html', person=person, student=student, address=address)
     else:
         return "The student is not present"
     
