@@ -2,15 +2,108 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>Admin Registration</title>
 </head>
 
-<body>
-    <p>Admin Registration</p>
-    
+<body class="container" style="background-color: #132f42;">
+    <!-- <h1>{{value}}</h1> -->
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: #F9F871">Admin Registration</p>
+    <form class="mx-1 mx-md-4" method="POST" style="color: #FFF">
+        <div class="card">
+            <div class = "card-body" style="background-color: #00586C" padding = "16px">
+
+        <div class="row g-2">
+            <div class="col-lg-6">
+                <input type="number" id="form3Example3c" class="form-control" name="person_id" required />
+                <label class="form-label" for="form3Example3c">Admin ID<span style="color:red">*</span></label>
+            </div>
+
+            <div class="col-lg-6">
+                <input type="text" id="form3Example3c" class="form-control" name="first_name" required />
+                <label class="form-label" for="form3Example3c">First Name<span style="color:red">*</span></label>
+            </div>
+        </div>
+
+        <div class="row g-2">
+            <div class="col-lg-6">
+                <input type="text" id="form3Example3c" class="form-control" name="middle_name" />
+                <label class="form-label" for="form3Example3c">Middle Name</label>
+            </div>
+
+            <div class="col-lg-6">
+                <input type="text" id="form3Example3c" class="form-control" name="last_name" />
+                <label class="form-label" for="form3Example3c">Last Name</label>
+            </div>
+        </div>
+
+
+        <div class="row g-2">
+            <div class="col-lg-4">
+                <input type="number" id="form3Example3c" class="form-control" name="country_code" required />
+                <label class="form-label" for="form3Example3c">Country Code<span style="color:red">*</span></label>
+            </div>
+
+            <div class="form-outline flex-fill mb-0 col-lg-8">
+                <input type="number" id="form3Example3c" class="form-control" name="mobile_number" required />
+                <label class="form-label" for="form3Example3c">Mobile Number<span style="color:red">*</span></label>
+            </div>
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-12">
+            <input type="email" id="form3Example3c" class="form-control" name="email_id" required />
+            <label class="form-label" for="form3Example3c">Email id<span style="color:red">*</span></label>
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-12">
+            <input type="text" id="form3Example3c" class="form-control" name="profile_photo" />
+            <label class="form-label" for="form3Example3c">Profile Photo</label>
+        </div>
+
+        <div class="row g-2">
+            <div class="form-outline flex-fill mb-0 col-lg-5">
+                <input type="text" id="form3Example3c" class="form-control" name="nationality" required />
+                <label class="form-label" for="form3Example3c">Nationality<span style="color:red">*</span></label>
+            </div>
+
+            <div class="form-outline flex-fill mb-0 col-lg-5">
+                <input type="text" id="form3Example3c" class="form-control" name="password" required />
+                <label class="form-label" for="form3Example3c">Password<span style="color:red">*</span></label>
+            </div>
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-12">
+            <input type="text" id="form3Example3c" class="form-control" name="designation" required />
+            <label class="form-label" for="form3Example3c">Designation<span style="color:red">*</span></label>
+        </div>
+
+        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+        </div>
+    </div>
+    </div>
+
+    </form>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            if ('{{ value }}'){
+                alert('{{ value }}');
+            }
+        }
+    </script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
