@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 import yaml
 import json
@@ -15,6 +15,8 @@ app.config['MYSQL_DB'] = db['mysql_db']
 
 mysql = MySQL(app)
 
+# global variables
+student_cpi = 0
 
 @app.route('/', methods=['GET','POST'])
 def login():
@@ -22,7 +24,8 @@ def login():
         # Fetch form data
         userDetails = request.form
         user_id = userDetails['user_id']
-        password = userDetails['password'] 
+        password = userDetails['password']
+
         cur = mysql.connection.cursor()
         
         cur.execute("SELECT * FROM person WHERE person_id=%s AND password_hash=%s",(user_id, password))
@@ -31,7 +34,11 @@ def login():
 
         if user:
             # successful login, redirect to home page
-            return redirect('/student-dashboard')
+            print(user[9])
+            if (user[9]=="student"):
+                return redirect('/student-dashboard/'+str(user_id))
+            else:
+                return "you are either company rep or admin or an unregistered student"
         else:
             # invalid login, show error message
             error = 'Invalid username or password'
@@ -59,7 +66,6 @@ def register():
 def student_reg():
     if request.method == 'POST':
         userDetails = request.form
-        
         person_id = userDetails['person_id'],
         first_name = userDetails['first_name'],
         middle_name = userDetails['middle_name'],
@@ -99,7 +105,7 @@ def student_reg():
                 cur.execute(sql1, values1)
                 mysql.connection.commit() 
                 print("Data for student inserted successfully")          
-                return redirect("/student-dashboard")        
+                return redirect("/student-dashboard/"+str(person_id))      
         
             except mysql.connection.Error as error:
                 # print("Failed to insert data into MySQL table: {}".format(error))
@@ -120,30 +126,66 @@ def student_reg():
     else:  
         return render_template('login/student.html')
     
-@app.route('/student-dashboard')
-def student_dashboard():
-    return render_template('dashboard/student_view.html')
+@app.route('/student-dashboard/<person_id>')
+def student_dashboard(person_id):
+    return render_template('dashboard/student_view.html', person_id=person_id)
     
-@app.route('/student-profile')
-def student_profile():
-    # cur = mysql.connection.cursor()
-    # print(type(id))
-    # cur.execute("SELECT * FROM student where person_id=%s", (id,))
-    # # cur.execute("SELECT * FROM student where person_id=10000")
-    # students = cur.fetchall()
-    
-    # cur.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=%s and TABLE_NAME=%s ORDER BY ORDINAL_POSITION",("Placement_management_system","student", ))
-    # col_name = list(cur.fetchall())
-    # col_name[0] = ("ID", )
-    return render_template('dashboard/student-profile.html')
+@app.route('/student-profile/<person_id>')
+def student_profile(person_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
+    person = cur.fetchone()
+    cur.execute("SELECT * FROM student WHERE person_id=%s",[person_id])
+    student = cur.fetchone()
+    if person and student:
+        return render_template('dashboard/student-profile.html', person=person, student=student)
+    else:
+        return "The student is not present"
     
 @app.route('/student-all-jobs')
 def student_all_jobs():
+    cur = mysql.connection.cursor()
+    resultValue = cur.execute("SELECT * FROM job_profile")
+    if resultValue > 0:
+        jobDetails = cur.fetchall()
+        return render_template('dashboard/all_jobs.html',jobDetails=jobDetails)
     return render_template('dashboard/all_jobs.html')
+
+@app.route('/jobs/<job_id>')
+def show_job_profile(job_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM job_profile WHERE job_id=%s",[job_id])
+    job = cur.fetchone()
+    if job:
+        return render_template('dashboard/one_job_details.html', job=job)
+    else:
+        return "No Job ID exists with this id"
+
     
-@app.route('/student-eligible-jobs')
-def student_eligible_jobs():
-    return render_template('dashboard/eligible_jobs.html')
+@app.route('/student-eligible-jobs/<person_id>')
+def student_eligible_jobs(person_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM student where person_id=%s",[person_id])
+    person = cur.fetchone()
+    # return person
+    if (person):
+        print("inside person")
+        std_cpi = (person[1])
+        # print(type(std_cpi))
+        # cur.execute("SELECT * FROM job_profile where cutoff_cpi <= 8.0")
+
+        cur.execute("SELECT * FROM job_profile where cutoff_cpi <= "+str(std_cpi))
+        resultValue = cur.fetchall()
+        
+        if len(resultValue) > 0:
+            jobDetails = resultValue
+            return render_template('dashboard/eligible_jobs.html',jobDetails=jobDetails)
+        else:
+            return "No jobs present"
+    else:
+        return "No such person exists"
+    
+    
 
 @app.route('/student-applied-jobs')
 def student_applied_jobs():
