@@ -155,6 +155,8 @@ def hr_reg():
         group_discussion = userDetails['group_discussion'],
         technical_interviews = userDetails['technical_interviews'],
         hr_interviews = userDetails['hr_interviews'],
+        eligible_minor_disc = userDetails['eligible_minor_disc']
+        eligible_major_disc = userDetails['eligible_major_disc']
         website = userDetails['website'],
         type_of_org = userDetails['type_of_org'],
         industry_sector = userDetails['industry_sector'],
@@ -184,8 +186,8 @@ def hr_reg():
                 return render_template('login/company_rep.html', value=error)
             
             try:
-                sql1 = "INSERT INTO job_profile (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-                values1 = (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews)
+                sql1 = "INSERT INTO job_profile (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews, eligible_minor_disc, eligible_major_disc) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                values1 = (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews, eligible_minor_disc, eligible_major_disc)
                 cur.execute(sql1, values1)
                 mysql.connection.commit() 
                 print("Data for job profile inserted successfully")          
