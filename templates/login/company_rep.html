@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,15 +14,16 @@
     <title>Company Representative Registration</title>
   </head>
 
-  <body class="container" style="background-color: #eee">
+  <body class="container" style="background-color: #132f42">
     <!-- <h1>{{value}}</h1> -->
-    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: #F9F871" >
       Company Representative Registration
     </p>
 
-    <form class="mx-1 mx-md-4" method="POST">
-      <div>
-        <p class="text-left h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+    <form class="mx-1 mx-md-4" method="POST" style="color: #FFF" >
+        <div class="card">
+      <div class = "card-body" style="background-color: #00586C" padding = "16px">
+        <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
           Personal Details
         </p>
 
@@ -34,7 +36,7 @@
               name="person_id"
               required
             />
-            <label class="form-label" for="form3Example3c">HR ID*</label>
+            <label class="form-label" for="form3Example3c">HR ID <span style="color:red">*</span></label>
           </div>
 
           <div class="col-lg-6">
@@ -45,7 +47,7 @@
               name="first_name"
               required
             />
-            <label class="form-label" for="form3Example3c">First Name*</label>
+            <label class="form-label" for="form3Example3c">First Name<span style="color:red">*</span></label>
           </div>
         </div>
 
@@ -80,19 +82,20 @@
               name="country_code"
               required
             />
-            <label class="form-label" for="form3Example3c">Country Code*</label>
+            <label class="form-label" for="form3Example3c">Country Code<span style="color:red">*</span></label>
           </div>
 
           <div class="form-outline flex-fill mb-0 col-lg-8">
             <input
-              type="number"
-              id="form3Example3c"
+              type="tel"
+              id="phone-number"
               class="form-control"
               name="mobile_number"
+              maxlength="10"
               required
             />
             <label class="form-label" for="form3Example3c"
-              >Mobile Number*</label
+              >Mobile Number<span style="color:red">*</span></label
             >
           </div>
         </div>
@@ -105,7 +108,7 @@
             name="email_id"
             required
           />
-          <label class="form-label" for="form3Example3c">Email id*</label>
+          <label class="form-label" for="form3Example3c">Email id<span style="color:red">*</span></label>
         </div>
 
         <div class="form-outline flex-fill mb-0 col-lg-12">
@@ -128,7 +131,7 @@
             name="password"
             required
           />
-          <label class="form-label" for="form3Example3c">Password*</label>
+          <label class="form-label" for="form3Example3c">Password<span style="color:red">*</span></label>
         </div>
         
         <div class="form-outline flex-fill mb-0 col-lg-5">
@@ -139,13 +142,18 @@
               name="nationality"
               required
             />
-            <label class="form-label" for="form3Example3c">Nationality*</label>
+            <label class="form-label" for="form3Example3c">Nationality<span style="color:red">*</span></label>
           </div>
           </div>
-        
+        </div>
       </div>
-      <div>
-        <p class="text-left h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+
+    <br><br>
+
+
+      <div class="card">
+      <div class = "card-body" style="background-color: #00586C" padding = "16px">
+        <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
           Company Details
         </p>
 
@@ -240,9 +248,16 @@
 
           </div>
         </div>
+        </div>
+    </div>
 
-        <div>
-            <p class="text-left h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+    <br><br>
+    
+
+        <div class="card">
+
+        <div class = "card-body" style="background-color: #00586C" padding = "16px">
+            <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
               Job Details
             </p>
             
@@ -256,7 +271,7 @@
               name="job_id"
               required
             />
-            <label class="form-label" for="form3Example3c">Job ID*</label>
+            <label class="form-label" for="form3Example3c">Job ID<span style="color:red">*</span></label>
           </div>
 
           <div class="form-outline flex-fill mb-0 col-lg-3">
@@ -273,16 +288,17 @@
           </div>
 
           <!--take file as input-->
-          <div class="form-outline flex-fill mb-0 col-lg-3">
+          <div class="mb-3">
             <input
-              type="text"
-              id="form3Example3c"
+              type="file"
+              id="formFileMultiple"
               class="form-control"
               name="job_description"
               required
+              multiple
             />
-            <label class="form-label" for="form3Example3c"
-              >Job Description*</label
+            <label class="form-label" for="formFileMultiple"
+              >Job Description<span style="color:red">*</span></label
             >
           </div>
         </div>
@@ -301,7 +317,7 @@
 
           
         </div>
-      </div>
+      
 
       <!--take file as input-->
       <div class="row g-2">
@@ -442,7 +458,7 @@
             type="text"
             id="form3Example3c"
             class="form-control"
-            name="group_dsicussion"
+            name="group_discussion"
             required
           />
           <label class="form-label" for="form3Example3c"
@@ -452,7 +468,7 @@
 
         <div class="form-outline flex-fill mb-0 col-lg-6">
           <input
-            type="text"
+            type="int"
             id="form3Example3c"
             class="form-control"
             name="technical_interviews"
@@ -471,7 +487,7 @@
 
         <div class="form-outline flex-fill mb-0 col-lg-6">
           <input
-            type="text"
+            type="int"
             id="form3Example3c"
             class="form-control"
             name="hr_interviews"
@@ -550,10 +566,10 @@
           </div>
 
         
-      </div>
-    </div>
+      
+    
 
-    <table>
+    <table width="100%">
         <tr>
           <td>
             <label>
@@ -570,11 +586,11 @@
 
           <td>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="shortlist_from_resume">
                 Yes
             </label>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="shortlist_from_resume">
                 No
             </label><br>
             <label class="form-label" for="form3Example3c">Shortlist from Resume</label>
@@ -583,11 +599,11 @@
 
           <td>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="ppt">
                 Yes
             </label>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="ppt">
                 No
             </label><br>
             <label class="form-label" for="form3Example3c">PPT</label>
@@ -596,24 +612,24 @@
 
           <td>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="early_onboarding_possibility">
                 Yes
             </label>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="early_onboarding_possibility">
                 No
             </label><br>
-            <label class="form-label" for="form3Example3c">Early Graduate Students are Excluded</label>
+            <label class="form-label" for="form3Example3c">Early Onboarding Possibility</label>
           </td>
           <td>  </td>
 
           <td>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="particularly_early_onboarding_required">
                 Yes
             </label>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="particularly_early_onboarding_required">
                 No
             </label><br>
             <label class="form-label" for="form3Example3c">Particularly Early Onboarding Required</label>
@@ -622,11 +638,11 @@
 
           <td>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="six_month_intern_possibility">
                 Yes
             </label>
             <label>
-                <input type = 'radio' name="service_bond">
+                <input type = 'radio' name="six_month_intern_possibility">
                 No
             </label><br>
             <label class="form-label" for="form3Example3c">Six Month Intern Possibillity</label>
@@ -634,6 +650,9 @@
           
         </tr>
       </table>
+    </div>
+</div>
+</div>
 
       <div class="form-check d-flex justify-content-center mb-5">
         <input
@@ -650,6 +669,8 @@
       <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
         <button type="submit" class="btn btn-primary btn-lg">Register</button>
       </div>
+
+    
     </form>
 
     <script type="text/javascript">
