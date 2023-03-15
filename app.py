@@ -37,6 +37,8 @@ def login():
             print(user[9])
             if (user[9]=="student" or user[9]=="Student"):
                 return redirect('/student-dashboard/'+str(user_id))
+            elif (user[9]=="admin" or user[9]=="Admin"):
+                return redirect('/admin-dashboard/'+str(user_id))
             else:
                 return "you are either company rep or admin or an unregistered student"
         else:
@@ -130,10 +132,29 @@ def student_reg():
 @app.route('/student-dashboard/<person_id>')
 def student_dashboard(person_id):
     return render_template('dashboard/student_view.html', person_id=person_id)
+
+@app.route('/admin-dashboard/<person_id>')
+def admin_dashboard(person_id):
+    return render_template('dashboard/admin_view.html', person_id=person_id)
+
+@app.route('/admin-profile/<person_id>')
+def admin_profile(person_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
+    person = cur.fetchone()
+    cur.execute("SELECT * FROM administrator WHERE person_id=%s",[person_id])
+    admin = cur.fetchone() 
+    person = list(person)
+    person[4] = json.loads(person[4])
+    person = tuple(person)
+    if person and admin:
+        return render_template('dashboard/admin-profile.html', person=person, admin=admin)
+    else:
+        return "The student is not present"
+
     
 @app.route('/student-profile/<person_id>')
 def student_profile(person_id):
-    print(person_id)
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
     person = cur.fetchone()
