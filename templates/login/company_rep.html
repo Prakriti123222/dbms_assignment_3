@@ -1,12 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <title>Company Representative Registration</title>
-</head>
-<body>
-    <p>Company Representative Registration</p>
-</body>
+  </head>
+
+  <body class="container" style="background-color: #eee">
+    <!-- <h1>{{value}}</h1> -->
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+      Company Representative Registration
+    </p>
+
+    <form class="mx-1 mx-md-4" method="POST">
+      <div>
+        <p class="text-left h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+          Personal Details
+        </p>
+
+        <div class="row g-2">
+          <div class="col-lg-6">
+            <input
+              type="number"
+              id="form3Example3c"
+              class="form-control"
+              name="person_id"
+              required
+            />
+            <label class="form-label" for="form3Example3c">HR ID*</label>
+          </div>
+
+          <div class="col-lg-6">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="first_name"
+              required
+            />
+            <label class="form-label" for="form3Example3c">First Name*</label>
+          </div>
+        </div>
+
+        <div class="row g-2">
+          <div class="col-lg-6">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="middle_name"
+            />
+            <label class="form-label" for="form3Example3c">Middle Name</label>
+          </div>
+
+          <div class="col-lg-6">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="last_name"
+            />
+            <label class="form-label" for="form3Example3c">Last Name</label>
+          </div>
+        </div>
+
+        <div class="row g-2">
+          <div class="col-lg-4">
+            <input
+              type="number"
+              id="form3Example3c"
+              class="form-control"
+              name="country_code"
+              required
+            />
+            <label class="form-label" for="form3Example3c">Country Code*</label>
+          </div>
+
+          <div class="form-outline flex-fill mb-0 col-lg-8">
+            <input
+              type="number"
+              id="form3Example3c"
+              class="form-control"
+              name="mobile_number"
+              required
+            />
+            <label class="form-label" for="form3Example3c"
+              >Mobile Number*</label
+            >
+          </div>
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-12">
+          <input
+            type="email"
+            id="form3Example3c"
+            class="form-control"
+            name="email_id"
+            required
+          />
+          <label class="form-label" for="form3Example3c">Email id*</label>
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-12">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="profile_photo"
+          />
+          <label class="form-label" for="form3Example3c">Profile Photo</label>
+        </div>
+        <div class ="row g-2">
+
+        <div class="col-lg-6">
+           
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="password"
+            required
+          />
+          <label class="form-label" for="form3Example3c">Password*</label>
+        </div>
+        
+        <div class="form-outline flex-fill mb-0 col-lg-5">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="nationality"
+              required
+            />
+            <label class="form-label" for="form3Example3c">Nationality*</label>
+          </div>
+          </div>
+        
+      </div>
+      <div>
+        <p class="text-left h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+          Company Details
+        </p>
+
+        <div class="row g-2">
+
+          <div class="form-outline flex-fill mb-0 col-lg-4">
+            <input
+              type="text"
+              step="any"
+              id="form3Example3c"
+              class="form-control"
+              name="company_name"
+              required
+            />
+            <label class="form-label" for="form3Example3c">Company Name</label>
+          </div>
+
+          <div class="form-outline flex-fill mb-0 col-lg-4">
+            <input
+              type="text"
+              step="any"
+              id="form3Example3c"
+              class="form-control"
+              name="company_id"
+              required
+            />
+            <label class="form-label" for="form3Example3c">Company ID</label>
+          </div>
+
+          <div class="form-outline flex-fill mb-0 col-lg-4">
+            <input
+              type="text"
+              step="any"
+              id="form3Example3c"
+              class="form-control"
+              name="company_rep"
+              required
+            />
+            <label class="form-label" for="form3Example3c"
+              >Company Representative</label
+            >
+          </div>
+
+          <!-- Job Profile -->
+          <div class="form-outline flex-fill mb-0 col-lg-4">
+            <input
+              type="email"
+              id="form3Example3c"
+              class="form-control"
+              name="hr_email"
+              
+            />
+            <label class="form-label" for="form3Example3c"
+              >HR Email ID (doubt)</label
+            >
+          </div>
+
+          <div class="row g-2">
+            <div class="form-outline flex-fill mb-0 col-lg-6">
+                <input
+                  type="text"
+                  id="form3Example3c"
+                  class="form-control"
+                  name="website"
+                  required
+                />
+                <label class="form-label" for="form3Example3c">Website</label>
+              </div>
+      
+              <div class="form-outline flex-fill mb-0 col-lg-6">
+                <input
+                  type="text"
+                  id="form3Example3c"
+                  class="form-control"
+                  name="type_of_org"
+                  required
+                />
+                <label class="form-label" for="form3Example3c"
+                  >Type of Organisation</label
+                >
+              </div>
+              <div class="form-outline flex-fill mb-0 col-lg-6">
+                <input
+                  type="text"
+                  id="form3Example3c"
+                  class="form-control"
+                  name="industry_sector"
+                  required
+                />
+                <label class="form-label" for="form3Example3c">Industry Sector</label>
+              </div>
+
+          </div>
+        </div>
+
+        <div>
+            <p class="text-left h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+              Job Details
+            </p>
+            
+
+        <div class="row g-2">
+          <div class="form-outline flex-fill mb-0 col-lg-6">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="job_id"
+              required
+            />
+            <label class="form-label" for="form3Example3c">Job ID*</label>
+          </div>
+
+          <div class="form-outline flex-fill mb-0 col-lg-3">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="job_designation"
+              required
+            />
+            <label class="form-label" for="form3Example3c"
+              >Job Designation</label
+            >
+          </div>
+
+          <!--take file as input-->
+          <div class="form-outline flex-fill mb-0 col-lg-3">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="job_description"
+              required
+            />
+            <label class="form-label" for="form3Example3c"
+              >Job Description*</label
+            >
+          </div>
+        </div>
+
+        <div class="row g-2">
+          <div class="form-outline flex-fill mb-0 col-lg-4">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="job_location"
+              value="0"
+            />
+            <label class="form-label" for="form3Example3c">Job Location</label>
+          </div>
+
+          
+        </div>
+      </div>
+
+      <!--take file as input-->
+      <div class="row g-2">
+        <div class="form-outline flex-fill mb-0 col-lg-4">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="terms_and_conditions"
+            required
+          />
+          <label class="form-label" for="form3Example3c"
+            >Terms and Conditions</label
+          >
+        </div>
+
+        <!--add checkbox-->
+        <div class="form-outline flex-fill mb-0 col-lg-4">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="six_month_intern_possibility"
+            required
+          />
+          <label class="form-label" for="form3Example3c"
+            >Six Month Intern Possibillity</label
+          >
+        </div>
+
+        <!--add checkbox-->
+        <div class="form-outline flex-fill mb-0 col-lg-4">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="early_onboarding_possibility"
+            required
+          />
+          <label class="form-label" for="form3Example3c"
+            >Early Onboarding Possibility</label
+          >
+        </div>
+      </div>
+
+      <!-- add checkbox -->
+      <div class="form-outline flex-fill mb-0 col-lg-12">
+        <input
+          type="text"
+          id="form3Example3c"
+          class="form-control"
+          name="particularly_early_onboarding_required"
+        />
+        <label class="form-label" for="form3Example3c"
+          >Particularly Early Onboarding Required</label
+        >
+      </div>
+
+      <div class="row g-2">
+        <!-- add a checkbox -->
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="major_disc"
+            required
+          />
+          <label class="form-label" for="form3Example3c"
+            >Early Graduate Students are Excluded</label
+          >
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="shortlist_from_resume"
+            required
+          />
+          <label class="form-label" for="form3Example3c"
+            >Shortlist from Resume</label
+          >
+        </div>
+      </div>
+
+      <div class="row g-2">
+        <!-- add a checkbox -->
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="ppt"
+            required
+          />
+          <label class="form-label" for="form3Example3c">PPT</label>
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="technical_test"
+            required
+          />
+          <label class="form-label" for="form3Example3c">Technical Test</label>
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="aptitude_test"
+            required
+          />
+          <label class="form-label" for="form3Example3c">Aptitude Test</label>
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="psychometric_test"
+            required
+          />
+          <label class="form-label" for="form3Example3c"
+            >Psychometric Test</label
+          >
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="group_dsicussion"
+            required
+          />
+          <label class="form-label" for="form3Example3c"
+            >Group Discussion</label
+          >
+        </div>
+
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="technical_interviews"
+            required
+          />
+          <label class="form-label" for="form3Example3c"
+            >Technical Interviews</label
+          >
+        </div>
+        
+
+        </div>
+        <div>
+
+        
+
+        <div class="form-outline flex-fill mb-0 col-lg-6">
+          <input
+            type="text"
+            id="form3Example3c"
+            class="form-control"
+            name="hr_interviews"
+            required
+          />
+          <label class="form-label" for="form3Example3c">HR Interviews</label>
+        </div>
+        <!-- <div class="row">
+            <div class="col-1">
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    Yes
+                </label>
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    No
+                </label><br>
+                <label class="form-label" for="form3Example3c">Service Bond</label>
+            </div>
+            <div class="col-1">
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    Yes
+                </label>
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    No
+                </label><br>
+                <label class="form-label" for="form3Example3c">Service Bond</label>
+            </div>
+            <div class="col-1">
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    Yes
+                </label>
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    No
+                </label><br>
+                <label class="form-label" for="form3Example3c">Service Bond</label>
+            </div>
+            <div class="col-1">
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    Yes
+                </label>
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    No
+                </label><br>
+                <label class="form-label" for="form3Example3c">Service Bond</label>
+            </div>
+            <div class="col-1">
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    Yes
+                </label>
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    No
+                </label><br>
+                <label class="form-label" for="form3Example3c">Service Bond</label>
+            </div>
+            <div class="col-1">
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    Yes
+                </label>
+                <label>
+                    <input type = 'radio' name="service_bond">
+                    No
+                </label><br>
+                <label class="form-label" for="form3Example3c">Service Bond</label>
+            </div>
+        </div> -->
+          </div>
+
+        
+      </div>
+    </div>
+
+    <table>
+        <tr>
+          <td>
+            <label>
+                <input type = 'radio' name="service_bond">
+                Yes
+            </label>
+            <label>
+                <input type = 'radio' name="service_bond">
+                No
+            </label><br>
+            <label class="form-label" for="form3Example3c">Service Bond</label>
+          </td>
+          <td>  </td>
+
+          <td>
+            <label>
+                <input type = 'radio' name="service_bond">
+                Yes
+            </label>
+            <label>
+                <input type = 'radio' name="service_bond">
+                No
+            </label><br>
+            <label class="form-label" for="form3Example3c">Shortlist from Resume</label>
+          </td>
+          <td>  </td>
+
+          <td>
+            <label>
+                <input type = 'radio' name="service_bond">
+                Yes
+            </label>
+            <label>
+                <input type = 'radio' name="service_bond">
+                No
+            </label><br>
+            <label class="form-label" for="form3Example3c">PPT</label>
+          </td>
+          <td> </td>
+
+          <td>
+            <label>
+                <input type = 'radio' name="service_bond">
+                Yes
+            </label>
+            <label>
+                <input type = 'radio' name="service_bond">
+                No
+            </label><br>
+            <label class="form-label" for="form3Example3c">Early Graduate Students are Excluded</label>
+          </td>
+          <td>  </td>
+
+          <td>
+            <label>
+                <input type = 'radio' name="service_bond">
+                Yes
+            </label>
+            <label>
+                <input type = 'radio' name="service_bond">
+                No
+            </label><br>
+            <label class="form-label" for="form3Example3c">Particularly Early Onboarding Required</label>
+          </td>
+          <td>  </td>
+
+          <td>
+            <label>
+                <input type = 'radio' name="service_bond">
+                Yes
+            </label>
+            <label>
+                <input type = 'radio' name="service_bond">
+                No
+            </label><br>
+            <label class="form-label" for="form3Example3c">Six Month Intern Possibillity</label>
+          </td>
+          
+        </tr>
+      </table>
+
+      <div class="form-check d-flex justify-content-center mb-5">
+        <input
+          class="form-check-input me-2"
+          type="checkbox"
+          value=""
+          id="form2Example3c"
+        />
+        <label class="form-check-label" for="form2Example3">
+          I agree all statements in <a href="#!">Terms of service</a>
+        </label>
+      </div>
+
+      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+      </div>
+    </form>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        if ("{{ value }}") {
+          alert("{{ value }}");
+        }
+      };
+    </script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
