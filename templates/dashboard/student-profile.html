@@ -4,10 +4,27 @@
     margin-right: 20px;
   }
   .person_details > .row > :first-child{
-    font-weight: bold;
+    font-weight: bold; 
+    color: #1342F2;
+  }
+  .person_details > .row > :last-child{
+    
+    color: #0a0a0a;;
+  }
+  .ed_details > .row{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .ed_details > .row > :first-child{
+    font-weight: bold; 
+    color: #1342F2;
+  }
+  .ed_details > .row > :last-child{
+    
+    color: #0a0a0a;;
   }
 </style>
-<section style="background-color: #eee;">
+<section style="background-color: #f0f2f3;">  
 
     <div class="row" style="display: flex;">
       <div class="col-lg-4" style="margin-right: 10rem;">
@@ -26,40 +43,26 @@
             </div> -->
           </div>
         </div>
-        <!-- <div class="card mb-4 mb-lg-0">
-          <div class="card-body p-0">
-            <ul class="list-group list-group-flush rounded-3">
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fas fa-globe fa-lg text-warning"></i>
-                <p class="mb-0">https://mdbootstrap.com</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                <p class="mb-0">mdbootstrap</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                <p class="mb-0">@mdbootstrap</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                <p class="mb-0">mdbootstrap</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                <p class="mb-0">mdbootstrap</p>
-              </li>
-            </ul>
-          </div>
-        </div> -->
+        
       </div>
       <!-- <hr> -->
+      <div class="col-lg-8" style="display:inline">
+        <div class="card mb-4", style="margin-left: 0ch;">
+          <!-- <div class="card-body person_details" style="display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 90vh;"> -->
+          <h1> Personal Details </h1>
+          <!-- </div> -->
+          </div>
+
       <div class="col-lg-8" style="display: flex;">
         <div class="card mb-4">
           <div class="card-body person_details" style="display: flex;
           flex-direction: column;
           flex-wrap: wrap;
-          height: 90vh;">
+          height: 55vh;">
+          
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">First Name</p>
@@ -92,7 +95,7 @@
                 <p class="mb-0">Contact</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{person[4]}}</p>
+                <p class="text-muted mb-0">({{person[4]['country_code']}}) {{person[4]['number']}}</p>
               </div>
             </div>
             
@@ -149,6 +152,26 @@
                 <p class="text-muted mb-0">{{student[3]}}</p>
               </div>
             </div>
+            
+        </div>
+        <hr>
+
+        <div class="col-lg-8" style="display:inline">
+          <div class="card mb-4", style="margin-left: 0ch;">
+            <!-- <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 90vh;"> -->
+            <h1> Educational Details </h1>
+            <!-- </div> -->
+            </div>
+        
+        <div class="col-lg-8" style="display: flex;">
+        <div class="card mb-4">
+          <div class="card-body ed_details" style="display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 55vh;">
             
             <div class="row">
               <div class="col-sm-3">

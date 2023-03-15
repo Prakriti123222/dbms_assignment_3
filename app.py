@@ -138,7 +138,10 @@ def student_profile(person_id):
     cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
     person = cur.fetchone()
     cur.execute("SELECT * FROM student WHERE person_id=%s",[person_id])
-    student = cur.fetchone()
+    student = cur.fetchone() 
+    person = list(person)
+    person[4] = json.loads(person[4])
+    person = tuple(person)
     if person and student:
         return render_template('dashboard/student-profile.html', person=person, student=student)
     else:
