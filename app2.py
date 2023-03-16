@@ -45,11 +45,13 @@ def register():
     if request.method == 'POST':
         # Fetch form data
         userDetails = request.form
+        print(userDetails)
         role = userDetails['role']
+        print(role)
         if (role=="student"):
             return redirect('/student-registration')
         elif (role=="company_rep"):
-            return render_template('login/company_rep.html')
+            return redirect('/company_representative-registration')
         elif (role=="admin"):
             return render_template('login/admin.html')
     else:
@@ -68,10 +70,6 @@ def student_reg():
         email_id = userDetails['email_id'],
         profile_photo = userDetails['profile_photo'],
         password = userDetails['password'],
-        zip_code = userDetails['zip_code'],
-        city = userDetails['city'],
-        state = userDetails['state'],
-        address_line = userDetails['address_line'],
         nationality = userDetails['nationality'],
         cpi = userDetails['cpi'],
         backlogs = userDetails['backlogs'],
@@ -85,15 +83,7 @@ def student_reg():
         # year_of_graduation = userDetails['year_of_graduation'],
         resume = userDetails['resume'],
         major_disc = userDetails['major_disc'],
-        minor_disc = userDetails['minor_disc'],
-        # ADDED #
-        board_for_tenth = userDetails['board_for_tenth'],
-        board_of_twelfth  = userDetails['board_of_twelfth '],
-        tenth_percentage  = userDetails['tenth_percentage '],
-        twelfth_percentage  = userDetails['twelfth_percentage '],
-        competitive_exam_name = userDetails['competitive_exam_name'],
-        competitive_exam_rank = userDetails['competitive_exam_rank'],
-        # ADDED #
+        minor_disc = userDetails['minor_disc']
         x = {"country_code":country_code, "number":mobile_number}
         cur = mysql.connection.cursor()
 
@@ -118,36 +108,6 @@ def student_reg():
                 # return "An error occurred while inserting data, Error is {}".format(error)
                 error = "{}".format(error)
                 return render_template('login/student.html', value=error)
-            
-            try:
-                sql1 = "INSERT INTO education_details (person_id, board_for_tenth, board_of_twelfth, tenth_percentage, twelfth_percentage, competitive_exam_name, competitive_exam_rank) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                values1 = (person_id, board_for_tenth, board_of_twelfth, tenth_percentage, twelfth_percentage, competitive_exam_name, competitive_exam_rank)
-                cur.execute(sql1, values1)
-                mysql.connection.commit() 
-                print("Data for student inserted successfully")          
-                return redirect("/users")        
-        
-            except mysql.connection.Error as error:
-                # print("Failed to insert data into MySQL table: {}".format(error))
-                mysql.connection.rollback()  # Roll back changes in case of error
-                # return "An error occurred while inserting data, Error is {}".format(error)
-                error = "{}".format(error)
-                return render_template('login/student.html', value=error)
-            
-            try:
-                sql1 = "INSERT INTO address (person_id, zip_code, city, state, address_line, parent_id) VALUES (%s, %s, %s, %s, %s, %s)"
-                values1 = (person_id, zip_code, city, state, address_line, person_id)
-                cur.execute(sql1, values1)
-                mysql.connection.commit() 
-                print("Data for address inserted successfully")          
-                return redirect("/users")        
-        
-            except mysql.connection.Error as error:
-                # print("Failed to insert data into MySQL table: {}".format(error))
-                mysql.connection.rollback()  # Roll back changes in case of error
-                # return "An error occurred while inserting data, Error is {}".format(error)
-                error = "{}".format(error)
-                return render_template('login/company_rep.html', value=error)
             
         except mysql.connection.Error as error:
             # print("Failed to insert data into MySQL table: {}".format(error))
@@ -174,10 +134,6 @@ def hr_reg():
         email_id = userDetails['email_id'],
         profile_photo = userDetails['profile_photo'],
         password = userDetails['password'],
-        zip_code = userDetails['zip_code'],
-        city = userDetails['city'],
-        state = userDetails['state'],
-        address_line = userDetails['address_line'],
         nationality = userDetails['nationality'],
         company_name = userDetails['company_name'],
         company_id = userDetails['company_id'],
@@ -261,21 +217,6 @@ def hr_reg():
                 error = "{}".format(error)
                 return render_template('login/company_rep.html', value=error)
             
-            try:
-                sql1 = "INSERT INTO address (person_id, zip_code, city, state, address_line, parent_id) VALUES (%s, %s, %s, %s, %s, %s)"
-                values1 = (person_id, zip_code, city, state, address_line, person_id)
-                cur.execute(sql1, values1)
-                mysql.connection.commit() 
-                print("Data for address inserted successfully")          
-                return redirect("/users")        
-        
-            except mysql.connection.Error as error:
-                # print("Failed to insert data into MySQL table: {}".format(error))
-                mysql.connection.rollback()  # Roll back changes in case of error
-                # return "An error occurred while inserting data, Error is {}".format(error)
-                error = "{}".format(error)
-                return render_template('login/company_rep.html', value=error)
-            
         except mysql.connection.Error as error:
             # print("Failed to insert data into MySQL table: {}".format(error))
             mysql.connection.rollback()  # Roll back changes in case of error
@@ -301,10 +242,6 @@ def admin_reg():
         email_id = userDetails['email_id'],
         profile_photo = userDetails['profile_photo'],
         password = userDetails['password'],
-        zip_code = userDetails['zip_code'],
-        city = userDetails['city'],
-        state = userDetails['state'],
-        address_line = userDetails['address_line'],
         nationality = userDetails['nationality'],
         designation = userDetails['designation']
         x = {"country_code":country_code, "number":mobile_number}
@@ -331,21 +268,6 @@ def admin_reg():
                 # return "An error occurred while inserting data, Error is {}".format(error)
                 error = "{}".format(error)
                 return render_template('login/admin.html', value=error)
-            
-            try:
-                sql1 = "INSERT INTO address (person_id, zip_code, city, state, address_line, parent_id) VALUES (%s, %s, %s, %s, %s, %s)"
-                values1 = (person_id, zip_code, city, state, address_line, person_id)
-                cur.execute(sql1, values1)
-                mysql.connection.commit() 
-                print("Data for address inserted successfully")          
-                return redirect("/users")        
-        
-            except mysql.connection.Error as error:
-                # print("Failed to insert data into MySQL table: {}".format(error))
-                mysql.connection.rollback()  # Roll back changes in case of error
-                # return "An error occurred while inserting data, Error is {}".format(error)
-                error = "{}".format(error)
-                return render_template('login/company_rep.html', value=error)
             
         except mysql.connection.Error as error:
             # print("Failed to insert data into MySQL table: {}".format(error))
