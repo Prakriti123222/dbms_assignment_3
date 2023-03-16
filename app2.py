@@ -45,11 +45,13 @@ def register():
     if request.method == 'POST':
         # Fetch form data
         userDetails = request.form
+        print(userDetails)
         role = userDetails['role']
+        print(role)
         if (role=="student"):
             return redirect('/student-registration')
         elif (role=="company_rep"):
-            return render_template('login/company_rep.html')
+            return redirect('/company_representative-registration')
         elif (role=="admin"):
             return render_template('login/admin.html')
     else:
