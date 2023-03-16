@@ -1,29 +1,489 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Job Profile || {{job[0]}}</title>
-  </head>
-  <body>
-
-    <tr>
-        <td>{{job}}</td>
-        <br>
-        <td>{{company}}</td>
-        <br>
-        <td>{{details}}</td>
-        <br>
-       
-      </tr>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+<style>
+  .person_details > .row{
+    margin-left: 50px;
+    margin-right: 20px;
+  }
+  .person_details > .row > :first-child{
+    font-weight: bold; 
+    color: #1342F2;
+  }
+  .person_details > .row > :last-child{
     
-  </body>
-</html>
+    color: #0a0a0a;;
+  }
+  .ed_details > .row{
+    margin-left: 50px;
+    margin-right: 20px;
+  }
+  .ed_details > .row > :first-child{
+    font-weight: bold; 
+    color: #1342F2;
+  }
+  .ed_details > .row > :last-child{
+    
+    color: #0a0a0a;;
+  }
+/* ::backdrop{
+  background:linear-gradient(45deg, #070707, #e4e6ee)
+} */
+</style>
+
+<section class="container text-center"  style= "background:linear-gradient(45deg, #f5f3f3, #b6d7dd) ;">  
+        
+    
+      <div class="col-lg-8" style="display:inline">
+        <div class="card mb-4", style="margin-left: 0ch;">
+          <!-- <div class="card-body person_details" style="display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 90vh;"> -->
+          <h1> Basic Details </h1>
+          <!-- </div> -->
+          </div>
+          </div>
+
+      <div class="col-lg-8" style="display: flex;">
+        <div class="card mb-4">
+          <div class="card-body person_details" style="display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 30vh;">
+          
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Job Designation</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{job[1]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Company Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{company[3]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Type of Organisation</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{company[5]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Industry Sector</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{company[6]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Company Website</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{company[4]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Job Location</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{job[3]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Job Description</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{job[2]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Hiring Process Starts from</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{company[9]}}</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">End of the hiring process</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{company[10]}}</p>
+              </div>
+            </div>
+            
+      </div>
+      </div>
+            
+        </div>
+
+        <hr>
+
+        <div class="col-lg-8" style="display:inline">
+          <div class="card mb-4", style="margin-left: 0ch;">
+            <!-- <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 90vh;"> -->
+            <h1> Eligiblity </h1>
+            <!-- </div> -->
+            </div>
+        </div>
+
+        <div class="col-lg-8" style="display: flex;">
+        <div class="card mb-4">
+          <div class="card-body ed_details" style="display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 30vh;">
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Cut-off CPI</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{job[4]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Eligible Minor Disciplines</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{job[15]}}</p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Eligible Major Disciplines</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{job[17]}}</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        </div>
+        <hr>
+
+        <div class="col-lg-8" style="display:inline">
+          <div class="card mb-4", style="margin-left: 0ch;">
+            <!-- <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 90vh;"> -->
+            <h1> Selection Procedure </h1>
+            <!-- </div> -->
+            </div>
+        
+        <div class="col-lg-8" style="display: flex;">
+        <div class="card mb-4">
+          <div class="card-body ed_details" style="display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 30vh;">
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Current Status</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{job[11]}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Round Start Date</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{job[12]}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Round End date</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{job[13]}}</p>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Pre-Placement Talk</p>
+              </div>
+              <div class="col-sm-9">  
+                {%if job[16] == "0" %}
+                <p class="text-muted mb-0">No</p>
+                {% else %}
+                <p class="text-muted mb-0">Yes</p>
+                {% endif %}
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Technical Test</p>
+              </div>
+              <div class="col-sm-9">
+                  {%if job[18] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Aptitude Test</p>
+              </div>
+              <div class="col-sm-9">
+                {%if job[19] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Psychometric Test</p>
+              </div>
+              <div class="col-sm-9">
+                {%if job[20] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Group Discussion</p>
+              </div>
+              <div class="col-sm-9">
+                {%if job[21] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+              </div>
+            </div>    
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Number of Technical Rounds</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{job[22]}}</p>
+              </div>
+            </div> 
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Number of HR Interviews</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{job[23]}}</p>
+              </div>
+            </div> 
+            
+          </div>
+        </div>
+        </div>
+
+        <hr>
+
+        <div class="col-lg-8" style="display:inline">
+          <div class="card mb-4", style="margin-left: 0ch;">
+            <!-- <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 90vh;"> -->
+            <h1> Salary Details </h1>
+            <!-- </div> -->
+            </div>
+        </div>
+
+        <div class="col-lg-8" style="display: flex;">
+        <div class="card mb-4">
+          <div class="card-body ed_details" style="display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 25vh;"> 
+
+          <table border="1" width="80%" style="table-layout: fixed;">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <tr>
+              <th>Program</th>
+              <th>Number of positions</th>
+              <th>Basic</th>
+              <th>HRA</th>
+              <th>Gross</th>
+              <th>Other</th>
+              <th>Take Home</th>
+              <th>CTC</th>
+              
+            </tr>  
+            {% for detail in details %}
+            <tr>
+              <td>{{detail[8]}}</td>
+              <td>{{detail[1]}}</td>
+              <td>{{detail[2]}}</td>
+              <td>{{detail[3]}}</td>
+              <td>{{detail[4]}}</td>
+              <td>{{detail[5]}}</td>
+              <td>{{detail[6]}}</td>
+              <td>{{detail[7]}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+
+
+        </div>
+        </div> 
+        </div>
+
+        <hr> 
+
+        <div class="col-lg-8" style="display:inline">
+          <div class="card mb-4", style="margin-left: 0ch;">
+            <!-- <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 90vh;"> -->
+            <h1> Other Details </h1>
+            <!-- </div> -->
+            </div>
+        </div>
+        <div class="col-lg-8" style="display: flex;">
+          <div class="card mb-4">
+            <div class="card-body ed_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 30vh;">
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Designation of HR</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{company[2]}}</p>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Service Bond</p>
+            </div>
+            <div class="col-sm-9">
+              {%if job[5] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Terms & Conditions</p>
+            </div>
+            <div class="col-sm-9">
+              {%if job[6] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">6-month intern possibility</p>
+            </div>
+            <div class="col-sm-9">
+              {%if job[7] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Early onboarding possibility</p>
+            </div>
+            <div class="col-sm-9">
+              {%if job[8] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Early onboarding required</p>
+            </div>
+            <div class="col-sm-9">
+              {%if job[9] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Exclusion of early graduate students</p>
+            </div>
+            <div class="col-sm-9">
+              {%if job[10] == "0" %}
+                  <p class="text-muted mb-0">No</p>
+                  {% else %}
+                  <p class="text-muted mb-0">Yes</p>
+                  {% endif %}
+            </div>
+          </div>
+
+        </div>
+        </div>
+        </div>
+</section>
