@@ -33,9 +33,9 @@
 </style>
 
 <section class="container text-center"  style="background-color: #f0f2f3;">  
-  {{address}}
+  <!-- {{address}}
   <br>
-  {{education}}
+  {{education}} -->
     <div class="row" style="display: flex;">
       <div class="col-lg-4" style="margin-right: 0rem;">
         <div class="card mb-4">
@@ -126,6 +126,24 @@
                 <p class="text-muted mb-0">{{student[7]}}</p>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{address[4]}} , {{address[2]}} (Zip: {{address[1]}} ) </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">State</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{address[3]}} </p>
+              </div>
+            </div>
             
             <div class="row">
               <div class="col-sm-3">
@@ -182,6 +200,60 @@
           flex-direction: column;
           flex-wrap: wrap;
           height: 70vh;">
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Tenth Board</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{education[1]}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Tenth Percentage</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{education[3]}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Twelfth Board</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{education[2]}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Twelfth Percentage</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{education[4]}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Competitive Exam</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{education[5]}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Competetive Exam Rank</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{education[6]}}</p>
+            </div>
+          </div>
             
             <div class="row">
               <div class="col-sm-3">
