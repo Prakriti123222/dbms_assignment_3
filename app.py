@@ -39,6 +39,8 @@ def login():
                 return redirect('/student-dashboard/'+str(user_id))
             elif (user[9]=="admin" or user[9]=="Admin"):
                 return redirect('/admin-dashboard/'+str(user_id))
+            elif (user[9]=="company_rep"):
+                return redirect('/company-dashboard/'+str(user_id))
             else:
                 return "you are either company rep or admin or an unregistered student"
         else:
@@ -54,15 +56,149 @@ def register():
     if request.method == 'POST':
         # Fetch form data
         userDetails = request.form
+        print(userDetails)
         role = userDetails['role']
+        print(role)
         if (role=="student"):
             return redirect('/student-registration')
         elif (role=="company_rep"):
-            return render_template('login/company_rep.html')
+            return redirect('/company_representative-registration')
         elif (role=="admin"):
-            return render_template('login/admin.html')
+            return redirect('/administrator-registration')
     else:
         return render_template('login/register.html')
+
+@app.route('/company_representative-registration', methods=['GET', 'POST'])
+def hr_reg():
+    if request.method == 'POST':
+        userDetails = request.form
+        person_id = userDetails['person_id'],
+        first_name = userDetails['first_name'],
+        middle_name = userDetails['middle_name'],
+        last_name = userDetails['last_name'],
+        country_code = userDetails['country_code'],
+        mobile_number = userDetails['mobile_number'],
+        email_id = userDetails['email_id'],
+        profile_photo = userDetails['profile_photo'],
+        password = userDetails['password'],
+        nationality = userDetails['nationality'],
+        company_name = userDetails['company_name'],
+        company_id = userDetails['company_id'],
+        company_rep = userDetails['company_rep'],
+        hr_email = userDetails['hr_email'],
+        job_id = userDetails['job_id'],
+        job_designation = userDetails['job_designation'],
+        job_description = userDetails['job_description'],
+        job_location = userDetails['job_location'],
+        service_bond = userDetails['service_bond'],
+        # terms_and_conditions = userDetails['terms_and_conditions'],
+        six_month_intern_possibility = userDetails['six_month_intern_possibility'],
+        early_onboarding_possibility = userDetails['early_onboarding_possibility'],
+        particularly_early_onboarding_required = userDetails['particularly_early_onboarding_required'],
+        # early_graduate_students_are_excluded = userDetails['early_graduate_students_are_excluded'],
+        shortlist_from_resume = userDetails['shortlist_from_resume'],
+        ppt = userDetails['ppt'],
+        technical_test = userDetails['technical_test'],
+        psychometric_test = userDetails['psychometric_test'],
+        group_discussion = userDetails['group_discussion'],
+        technical_interviews = userDetails['technical_interviews'],
+        hr_interviews = userDetails['hr_interviews'],
+        eligible_minor_disc = userDetails['eligible_minor_disc'],
+        eligible_major_disc = userDetails['eligible_major_disc'],
+        website = userDetails['website'],
+        type_of_org = userDetails['type_of_org'],
+        industry_sector = userDetails['industry_sector'],
+        cutoff_cpi = userDetails['cutoff_cpi'],
+        start_date = userDetails['start_date'],
+        end_date = userDetails['end_date'],
+        aptitude_test = userDetails['aptitude_test'],
+        x = {"country_code":country_code, "number":mobile_number}
+        cur = mysql.connection.cursor()
+
+        try:
+            sql = "INSERT INTO person(person_id, first_name, middle_name, last_name, mobile_number, email, profile_photo, password_hash, nationality, person_role) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            values = (person_id,first_name, middle_name, last_name, json.dumps(x), email_id, profile_photo, password, nationality, "company_rep")
+            cur.execute(sql, values)
+            mysql.connection.commit() 
+            print("Data for company representative inserted successfully")                
+
+            try:
+                sql2 = "INSERT INTO job_profile(job_id, job_designation, job_description, job_location, cutoff_cpi, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required,early_graduate_students_are_excluded, current_status, start_date, end_date, shortlist_from_resume,eligible_minor_disc,ppt ,eligible_major_disc,technical_test ,aptitude_test,psychometric_test,group_discussion,technical_interviews,hr_interviews) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                values2 = (job_id, job_designation, job_description, job_location, cutoff_cpi, service_bond, "", six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, 0, "Job Posted", start_date, end_date, shortlist_from_resume,  eligible_minor_disc, ppt,  eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews)
+                cur.execute(sql2, values2)
+                mysql.connection.commit() 
+                print("Data for job profile inserted successfully")         
+
+                try:  
+                    sql1 = "INSERT INTO company_details (person_id, job_id, company_rep, company_name, website, type_of_org, industry_sector, no_of_members, no_of_rooms_required, start_date, end_date,parent_id_1, parent_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                    # sql1 = "INSERT INTO company_details (company_id, company_rep, company_name, website, type_of_org, industry_sector) VALUES (%s, %s, %s, %s, %s, %s)"
+                    values1 = (person_id, job_id, company_rep, company_name, website, type_of_org, industry_sector, '1','1','2023-06-20','2023-06-20',job_id, person_id)
+                    cur.execute(sql1, values1)
+                    mysql.connection.commit() 
+                    print("Data for company_details inserted successfully")    
+                    # return redirect("/users")    
+                    return redirect('/company-dashboard/'+str(person_id[0]))   
+                
+                except mysql.connection.Error as error:
+                    # print("Failed to insert data into MySQL table: {}".format(error))
+                    mysql.connection.rollback()  # Roll back changes in case of error
+                    mysql.connection.rollback()
+                    mysql.connection.rollback()
+                    # return "An error occurred while inserting data, Error is {}".format(error)
+                    error = "{}".format(error)
+                    return render_template('login/company_rep.html', value=error)  
+                  
+        
+            except mysql.connection.Error as error:
+                # print("Failed to insert data into MySQL table: {}".format(error))
+                mysql.connection.rollback()  # Roll back changes in case of error
+                mysql.connection.rollback()
+                # return "An error occurred while inserting data, Error is {}".format(error)
+                error = "{}".format(error)
+                return render_template('login/company_rep.html', value=error)
+            
+            # try:
+            #     sql1 = "INSERT INTO job_profile (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews, eligible_minor_disc, eligible_major_disc) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            #     values1 = (job_id, job_designation, job_description, job_location, service_bond, terms_and_condition, six_month_intern_possibility, early_onboarding_possibility, particularly_early_onboarding_required, early_graduate_students_are_excluded, shortlist_from_resume, eligible_minor_disc, ppt, eligible_major_disc, technical_test, aptitude_test, psychometric_test, group_discussion, technical_interviews, hr_interviews, eligible_minor_disc, eligible_major_disc)
+            #     cur.execute(sql1, values1)
+            #     mysql.connection.commit() 
+            #     print("Data for job profile inserted successfully")          
+            #     return redirect("/users")        
+        
+            # except mysql.connection.Error as error:
+            #     # print("Failed to insert data into MySQL table: {}".format(error))
+            #     mysql.connection.rollback()  # Roll back changes in case of error
+            #     # return "An error occurred while inserting data, Error is {}".format(error)
+            #     error = "{}".format(error)
+            #     return render_template('login/company_rep.html', value=error)
+            
+            # try:
+            #     sql1 = "INSERT INTO hr_invited (hr_email, company_name, parent_id) VALUES (%s, %s, %s)"
+            #     values1 = (hr_email, company_name, person_id)
+            #     cur.execute(sql1, values1)
+            #     mysql.connection.commit() 
+            #     print("Data for HR invited inserted successfully")          
+            #     return redirect("/users")        
+        
+            # except mysql.connection.Error as error:
+            #     # print("Failed to insert data into MySQL table: {}".format(error))
+            #     mysql.connection.rollback()  # Roll back changes in case of error
+            #     # return "An error occurred while inserting data, Error is {}".format(error)
+            #     error = "{}".format(error)
+            #     return render_template('login/company_rep.html', value=error)
+            
+        except mysql.connection.Error as error:
+            # print("Failed to insert data into MySQL table: {}".format(error))
+            mysql.connection.rollback()  # Roll back changes in case of error
+            error = "{}".format(error)
+            return render_template('login/company_rep.html', value=error)
+            # return "An error occurred while inserting data, Error is {}".format(error)
+
+        cur.close()
+
+    else:  
+        return render_template('login/company_rep.html')
+
 
 @app.route('/student-registration', methods=['GET', 'POST'])
 def student_reg():
@@ -128,10 +264,68 @@ def student_reg():
 
     else:  
         return render_template('login/student.html')
-    
+
+
+@app.route('/administrator-registration', methods=['GET', 'POST'])
+def admin_reg():
+    if request.method == 'POST':
+        userDetails = request.form
+        person_id = userDetails['person_id'],
+        first_name = userDetails['first_name'],
+        middle_name = userDetails['middle_name'],
+        last_name = userDetails['last_name'],
+        country_code = userDetails['country_code'],
+        mobile_number = userDetails['mobile_number'],
+        email_id = userDetails['email_id'],
+        profile_photo = userDetails['profile_photo'],
+        password = userDetails['password'],
+        nationality = userDetails['nationality'],
+        designation = userDetails['designation']
+        x = {"country_code":country_code, "number":mobile_number}
+        cur = mysql.connection.cursor()
+
+        try:
+            sql = "INSERT INTO person(person_id, first_name, middle_name, last_name, mobile_number, email, profile_photo, password_hash, nationality, person_role) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            values = (person_id,first_name, middle_name, last_name, json.dumps(x), email_id, profile_photo, password, nationality, "admin")
+            cur.execute(sql, values)
+            mysql.connection.commit() 
+            print("Data for admin inserted successfully")
+
+            try:
+                sql1 = "INSERT INTO administrator (person_id, designation, parent_id) VALUES (%s, %s, %s)"
+                values1 = (person_id, designation, person_id)
+                cur.execute(sql1, values1)
+                mysql.connection.commit() 
+                print("Data for admin inserted successfully")          
+                return redirect("/admin-dashboard/"+str(person_id[0]))  
+            
+            except mysql.connection.Error as error:
+                # print("Failed to insert data into MySQL table: {}".format(error))
+                mysql.connection.rollback()  # Roll back changes in case of error
+                # return "An error occurred while inserting data, Error is {}".format(error)
+                error = "{}".format(error)
+                return render_template('login/admin.html', value=error)
+            
+        except mysql.connection.Error as error:
+            # print("Failed to insert data into MySQL table: {}".format(error))
+            mysql.connection.rollback()  # Roll back changes in case of error
+            error = "{}".format(error)
+            return render_template('login/admin.html', value=error)
+            # return "An error occurred while inserting data, Error is {}".format(error)
+
+        cur.close()
+
+    else:  
+        return render_template('login/admin.html')
+                    
+
 @app.route('/student-dashboard/<person_id>')
 def student_dashboard(person_id):
     return render_template('dashboard/student_view.html', person_id=person_id)
+
+@app.route('/company-dashboard/<person_id>')
+def company_dashboard(person_id):
+    return render_template('dashboard/company_view.html', person_id=person_id)
 
 @app.route('/admin-dashboard/<person_id>')
 def admin_dashboard(person_id):
@@ -144,14 +338,36 @@ def admin_profile(person_id):
     person = cur.fetchone()
     cur.execute("SELECT * FROM administrator WHERE person_id=%s",[person_id])
     admin = cur.fetchone() 
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
-    if person and admin:
-        return render_template('dashboard/admin-profile.html', person=person, admin=admin)
+    if person and admin and address:
+        return render_template('dashboard/admin-profile.html', person=person, admin=admin, address=address)
     else:
-        return "The student is not present"
+        return "The admin is not present"
+    
+@app.route('/company-profile/<person_id>')
+def company_profile(person_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
+    person = cur.fetchone()
+    cur.execute("SELECT * FROM company_details WHERE person_id=%s",[person_id])
+    hr = cur.fetchone() 
+    person = list(person)
+    person[4] = json.loads(person[4])
+    person = tuple(person)
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
+    if person and hr:
+        return render_template('dashboard/company-profile.html', person=person, hr=hr, address=address)
+    else:
+        return "The hr is not present"
 
+@app.route('/post-job')
+def post_job():
+    return render_template('dashboard/post-job.html')
     
 @app.route('/student-profile/<person_id>')
 def student_profile(person_id):
@@ -160,14 +376,27 @@ def student_profile(person_id):
     person = cur.fetchone()
     cur.execute("SELECT * FROM student WHERE person_id=%s",[person_id])
     student = cur.fetchone() 
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
+    cur.execute("SELECT * FROM educational_details WHERE person_id=%s",[person_id])
+    education = cur.fetchone() 
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
-    if person and student:
-        return render_template('dashboard/student-profile.html', person=person, student=student)
+    if person and student and address:
+        return render_template('dashboard/student-profile.html', person=person, student=student, address=address, education=education)
     else:
         return "The student is not present"
     
+
+@app.route('/admin-add-company')
+def admin_add_company():
+    return render_template('dashboard/add_company.html')
+
+@app.route('/edit-company-status')
+def edit_company_status():
+    return render_template('dashboard/edit-company-status.html')
+
 @app.route('/student-all-jobs')
 def student_all_jobs():
     cur = mysql.connection.cursor()
