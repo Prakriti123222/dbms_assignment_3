@@ -37,6 +37,10 @@ def login():
             print(user[9])
             if (user[9]=="student" or user[9]=="Student"):
                 return redirect('/student-dashboard/'+str(user_id))
+            elif (user[9]=="admin" or user[9]=="Admin"):
+                return redirect('/admin-dashboard/'+str(user_id))
+            elif (user[9]=="company_rep"):
+                return redirect('/company-dashboard/'+str(user_id))
             else:
                 return "you are either company rep or admin or an unregistered student"
         else:
@@ -130,23 +134,81 @@ def student_reg():
 @app.route('/student-dashboard/<person_id>')
 def student_dashboard(person_id):
     return render_template('dashboard/student_view.html', person_id=person_id)
+
+@app.route('/company-dashboard/<person_id>')
+def company_dashboard(person_id):
+    return render_template('dashboard/company_view.html', person_id=person_id)
+
+@app.route('/admin-dashboard/<person_id>')
+def admin_dashboard(person_id):
+    return render_template('dashboard/admin_view.html', person_id=person_id)
+
+@app.route('/admin-profile/<person_id>')
+def admin_profile(person_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
+    person = cur.fetchone()
+    cur.execute("SELECT * FROM administrator WHERE person_id=%s",[person_id])
+    admin = cur.fetchone() 
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
+    person = list(person)
+    person[4] = json.loads(person[4])
+    person = tuple(person)
+    if person and admin and address:
+        return render_template('dashboard/admin-profile.html', person=person, admin=admin, address=address)
+    else:
+        return "The admin is not present"
+    
+@app.route('/company-profile/<person_id>')
+def company_profile(person_id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
+    person = cur.fetchone()
+    cur.execute("SELECT * FROM company_details WHERE person_id=%s",[person_id])
+    hr = cur.fetchone() 
+    person = list(person)
+    person[4] = json.loads(person[4])
+    person = tuple(person)
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
+    if person and hr and address:
+        return render_template('dashboard/company-profile.html', person=person, hr=hr, address=address)
+    else:
+        return "The hr is not present"
+
+@app.route('/post-job')
+def post_job():
+    return render_template('dashboard/post-job.html')
     
 @app.route('/student-profile/<person_id>')
 def student_profile(person_id):
-    print(person_id)
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
     person = cur.fetchone()
     cur.execute("SELECT * FROM student WHERE person_id=%s",[person_id])
     student = cur.fetchone() 
+    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+    address = cur.fetchone() 
+    cur.execute("SELECT * FROM educational_details WHERE person_id=%s",[person_id])
+    education = cur.fetchone() 
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
-    if person and student:
-        return render_template('dashboard/student-profile.html', person=person, student=student)
+    if person and student and address:
+        return render_template('dashboard/student-profile.html', person=person, student=student, address=address, education=education)
     else:
         return "The student is not present"
     
+
+@app.route('/admin-add-company')
+def admin_add_company():
+    return render_template('dashboard/add_company.html')
+
+@app.route('/edit-company-status')
+def edit_company_status():
+    return render_template('dashboard/edit-company-status.html')
+
 @app.route('/student-all-jobs')
 def student_all_jobs():
     cur = mysql.connection.cursor()
