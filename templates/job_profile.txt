@@ -1,257 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <title>Company Representative Registration</title>
-  </head>
-
-  <body class="container" style="background-color: #132f42">
-    <!-- <h1>{{value}}</h1> -->
-    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: #F9F871" >
-      Company Representative Registration
-    </p>
-
-    <form class="mx-1 mx-md-4" method="POST" style="color: #FFF" >
-        <div class="card">
-      <div class = "card-body" style="background-color: #00586C" padding = "16px">
-        <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
-          Personal Details
-        </p>
-
-        <div class="row g-2">
-          <div class="col-lg-6">
-            <input
-              type="number"
-              id="form3Example3c"
-              class="form-control"
-              name="person_id"
-            />
-            <label class="form-label" for="form3Example3c">HR ID <span style="color:red">*</span></label>
-          </div>
-
-          <div class="col-lg-6">
-            <input
-              type="text"
-              id="form3Example3c"
-              class="form-control"
-              name="first_name"
-              required
-            />
-            <label class="form-label" for="form3Example3c">First Name<span style="color:red">*</span></label>
-          </div>
-        </div>
-
-        <div class="row g-2">
-          <div class="col-lg-6">
-            <input
-              type="text"
-              id="form3Example3c"
-              class="form-control"
-              name="middle_name"
-            />
-            <label class="form-label" for="form3Example3c">Middle Name</label>
-          </div>
-
-          <div class="col-lg-6">
-            <input
-              type="text"
-              id="form3Example3c"
-              class="form-control"
-              name="last_name"
-            />
-            <label class="form-label" for="form3Example3c">Last Name</label>
-          </div>
-        </div>
-
-        <div class="row g-2">
-          <div class="col-lg-4">
-            <input
-              type="number"
-              id="form3Example3c"
-              class="form-control"
-              name="country_code"
-              required
-            />
-            <label class="form-label" for="form3Example3c">Country Code<span style="color:red">*</span></label>
-          </div>
-
-          <div class="form-outline flex-fill mb-0 col-lg-8">
-            <input
-              type="tel"
-              id="phone-number"
-              class="form-control"
-              name="mobile_number"
-              maxlength="10"
-              required
-            />
-            <label class="form-label" for="form3Example3c"
-              >Mobile Number<span style="color:red">*</span></label
-            >
-          </div>
-        </div>
-
-        <div class="form-outline flex-fill mb-0 col-lg-12">
-          <input
-            type="email"
-            id="form3Example3c"
-            class="form-control"
-            name="email_id"
-            required
-          />
-          <label class="form-label" for="form3Example3c">Email id<span style="color:red">*</span></label>
-        </div>
-
-        <div class="form-outline flex-fill mb-0 col-lg-12">
-          <input
-            type="text"
-            id="form3Example3c"
-            class="form-control"
-            name="profile_photo"
-          />
-          <label class="form-label" for="form3Example3c">Profile Photo</label>
-        </div>
-        <div class ="row g-2">
-
-        <div class="col-lg-6">
-           
-          <input
-            type="text"
-            id="form3Example3c"
-            class="form-control"
-            name="password"
-            required
-          />
-          <label class="form-label" for="form3Example3c">Password<span style="color:red">*</span></label>
-        </div>
-        
-        <div class="form-outline flex-fill mb-0 col-lg-5">
-            <input
-              type="text"
-              id="form3Example3c"
-              class="form-control"
-              name="nationality"
-              required
-            />
-            <label class="form-label" for="form3Example3c">Nationality<span style="color:red">*</span></label>
-          </div>
-          </div>
-        </div>
-      </div>
-
-    <br><br>
-
-
-      <div class="card">
-      <div class = "card-body" style="background-color: #00586C" padding = "16px">
-        <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
-          Company Details
-        </p>
-
-        <div class="row g-2">
-
-          <div class="form-outline flex-fill mb-0 col-lg-4">
-            <input
-              type="text"
-              step="any"
-              id="form3Example3c"
-              class="form-control"
-              name="company_name"
-              required
-            />
-            <label class="form-label" for="form3Example3c">Company Name</label>
-          </div>
-
-          <div class="form-outline flex-fill mb-0 col-lg-4">
-            <input
-              type="text"
-              step="any"
-              id="form3Example3c"
-              class="form-control"
-              name="company_id"
-              required
-            />
-            <label class="form-label" for="form3Example3c">Company ID</label>
-          </div>
-
-          <div class="form-outline flex-fill mb-0 col-lg-4">
-            <input
-              type="text"
-              step="any"
-              id="form3Example3c"
-              class="form-control"
-              name="company_rep"
-              required
-            />
-            <label class="form-label" for="form3Example3c"
-              >Company Representative</label
-            >
-          </div>
-
-          <!-- Job Profile -->
-          <div class="form-outline flex-fill mb-0 col-lg-4">
-            <input
-              type="email"
-              id="form3Example3c"
-              class="form-control"
-              name="hr_email"
-            />
-            <label class="form-label" for="form3Example3c"
-              >HR Email ID (doubt)</label
-            >
-          </div>
-
-          <div class="row g-2">
-            <div class="form-outline flex-fill mb-0 col-lg-6">
-                <input
-                  type="text"
-                  id="form3Example3c"
-                  class="form-control"
-                  name="website"
-                />
-                <label class="form-label" for="form3Example3c">Website</label>
-              </div>
-      
-              <div class="form-outline flex-fill mb-0 col-lg-6">
-                <input
-                  type="text"
-                  id="form3Example3c"
-                  class="form-control"
-                  name="type_of_org"
-                  required
-                />
-                <label class="form-label" for="form3Example3c"
-                  >Type of Organisation</label
-                >
-              </div>
-              <div class="form-outline flex-fill mb-0 col-lg-6">
-                <input
-                  type="text"
-                  id="form3Example3c"
-                  class="form-control"
-                  name="industry_sector"
-                  required
-                />
-                <label class="form-label" for="form3Example3c">Industry Sector</label>
-              </div>
-
-          </div>
-        </div>
-        </div>
-    </div>
-
-    <br><br>
-    
-
-        <div class="card">
+<div class="card">
 
         <div class = "card-body" style="background-color: #00586C" padding = "16px">
             <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
@@ -311,40 +58,11 @@
             />
             <label class="form-label" for="form3Example3c">Job Location</label>
           </div>
-          <div class="form-outline flex-fill mb-0 col-lg-6">
-            <input
-              type="number"
-              step="any"
-              id="form3Example3c"
-              class="form-control"
-              name="cutoff_cpi"
-              required
-            />
-            <label class="form-label" for="form3Example3c">Cutoff CPI<span style="color:red">*</span></label>
-          </div>
+
           
         </div>
       
-        <div class="form-outline flex-fill mb-0 col-lg-6">
-          <input
-            type="date"
-            id="form3Example3c"
-            class="form-control"
-            name="start_date"
-            required
-          />
-          <label class="form-label" for="form3Example3c">Start Date<span style="color:red">*</span></label>
-        </div>
-        <div class="form-outline flex-fill mb-0 col-lg-6">
-          <input
-            type="date"
-            id="form3Example3c"
-            class="form-control"
-            name="end_date"
-            required
-          />
-          <label class="form-label" for="form3Example3c">End Date<span style="color:red">*</span></label>
-        </div>
+
       <!--take file as input-->
       <div class="row g-2">
         <div class="form-outline flex-fill mb-0 col-lg-4">
@@ -352,7 +70,7 @@
             type="text"
             id="form3Example3c"
             class="form-control"
-            name="terms_and_conditions"
+            name="terms_and_condition"
           />
           <label class="form-label" for="form3Example3c"
             >Terms and Conditions</label
@@ -362,7 +80,7 @@
         <!--add checkbox-->
         <div class="form-outline flex-fill mb-0 col-lg-4">
           <input
-            type="number"
+            type="text"
             id="form3Example3c"
             class="form-control"
             name="six_month_intern_possibility"
@@ -376,7 +94,7 @@
         <!--add checkbox-->
         <div class="form-outline flex-fill mb-0 col-lg-4">
           <input
-            type="number"
+            type="text"
             id="form3Example3c"
             class="form-control"
             name="early_onboarding_possibility"
@@ -391,7 +109,7 @@
       <!-- add checkbox -->
       <div class="form-outline flex-fill mb-0 col-lg-12">
         <input
-          type="number"
+          type="text"
           id="form3Example3c"
           class="form-control"
           name="particularly_early_onboarding_required"
@@ -406,10 +124,10 @@
         <!-- add a checkbox -->
         <div class="form-outline flex-fill mb-0 col-lg-6">
           <input
-            type="number"
+            type="text"
             id="form3Example3c"
             class="form-control"
-            name="early_graduate_students_are_excluded"
+            name="major_disc"
             required
           />
           <label class="form-label" for="form3Example3c"
@@ -699,39 +417,3 @@
     </div>
 </div>
 </div>
-
-      <div class="form-check d-flex justify-content-center mb-5">
-        <input
-          class="form-check-input me-2"
-          type="checkbox"
-          value=""
-          id="form2Example3c"
-        />
-        <label class="form-check-label" for="form2Example3">
-          I agree all statements in <a href="#!">Terms of service</a>
-        </label>
-      </div>
-
-      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-        <button type="submit" class="btn btn-primary btn-lg">Register</button>
-      </div>
-
-    
-    </form>
-
-    <script type="text/javascript">
-      window.onload = function () {
-        if ("{{ value }}") {
-          alert("{{ value }}");
-        }
-      };
-    </script>
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
