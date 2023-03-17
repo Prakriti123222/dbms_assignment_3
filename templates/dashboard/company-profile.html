@@ -1,18 +1,341 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    this is admin profile of 
-   <br> 
-    {{person}}
+<style>
+    .person_details > .row{
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .person_details > .row > :first-child{
+      font-weight: bold; 
+      color: #1342F2;
+    }
+    .person_details > .row > :last-child{
+      
+      color: #0a0a0a;;
+    }
+    .ed_details > .row{
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .ed_details > .row > :first-child{
+      font-weight: bold; 
+      color: #1342F2;
+    }
+    .ed_details > .row > :last-child{
+      
+      color: #0a0a0a;;
+    }
+    .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+  }
+  </style>
+  
+  <section class="container text-center"  style="background-color: #f0f2f3;">  
+    <!-- {{address}}
     <br>
-    {{hr}}
-    <br>
-    {{address}}
-</body>
-</html>
+    {{education}} -->
+      <div class="row" style="display: flex;">
+        <div class="col-lg-4" style="margin-right: 0rem;">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <div style="display: flex;flex-direction: column;width: max-content;">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                  class="rounded-circle img-fluid" style="width: 150px;">
+                <div class="my-3 d-flex" style="width: max-content;margin: auto;">{{person[1]}}</div>
+              </div>
+              <p class="text-muted mb-1">HR ID: {{person[0]}}</p>
+              <p class="text-muted mb-4">HR email: {{person[5]}}</p>
+              <!-- <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary">Follow</button>
+                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              </div> -->
+            </div>
+          </div>
+          
+        </div>
+        <!-- <hr> -->
+        <div class="col-lg-8" style="display:inline">
+          <div class="card mb-4", style="margin-left: 0ch;">
+            <!-- <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 90vh;"> -->
+            <h1> Personal Details </h1>
+            <!-- </div> -->
+            </div>
+  
+        <div class="col-lg-8" style="display: flex;">
+          <div class="card mb-4">
+            <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 70vh;">
+            
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">First Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{person[1]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Middle Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{person[2]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Last Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{person[3]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Contact</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">({{person[4]['country_code']}}) {{person[4]['number']}}</p>
+                </div>
+              </div>
+              
+              <!-- <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Institute Email Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{person[5]}}</p>
+                </div>
+              </div> -->
+              
+              <!-- <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Personal Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[7]}}</p>
+                </div>
+              </div> -->
+  
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{address[4]}} , {{address[2]}} (Zip: {{address[1]}} ) </p>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">State</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{address[3]}} </p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Nationality</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{person[8]}}</p>
+                </div>
+              </div>
+              
+              <!-- <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Gender</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[4]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Date of birth</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[5]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Category</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[3]}}</p>
+                </div>
+              </div> -->
+              
+          </div>
+          <hr>
+  
+          <div class="col-lg-8" style="display:inline">
+            <div class="card mb-4", style="margin-left: 0ch;">
+              <!-- <div class="card-body person_details" style="display: flex;
+              flex-direction: column;
+              flex-wrap: wrap;
+              height: 90vh;"> -->
+              <h1> Company Details </h1>
+              <!-- </div> -->
+              </div>
+          
+          <div class="col-lg-8" style="display: flex;">
+          <div class="card mb-4">
+            <div class="card-body ed_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 70vh;">
+  
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Company Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{hr[1]}}</p>
+              </div>
+            </div>
+  
+            <!-- <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Tenth Percentage</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{education[3]}}</p>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Twelfth Board</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{education[2]}}</p>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Twelfth Percentage</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{education[4]}}</p>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Competitive Exam</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{education[5]}}</p>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Competetive Exam Rank</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{education[6]}}</p>
+              </div>
+            </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">CPI</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[1]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">backlogs</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[2]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Professional Experience (in months)</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[6]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Year of Graduation</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[8]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Current Program</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[9]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">CV</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[10]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Major Disciplines</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[11]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Minor Disciplines</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[12]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Date of joining</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{student[13]}}</p>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          
+  </section>
