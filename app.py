@@ -343,7 +343,7 @@ def admin_profile(person_id):
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
-    if person and admin and address:
+    if person and admin:
         return render_template('dashboard/admin-profile.html', person=person, admin=admin, address=address)
     else:
         return "The admin is not present"
