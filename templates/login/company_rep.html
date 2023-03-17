@@ -565,6 +565,19 @@
             />
             <label class="form-label" for="form3Example3c">Eligible Major Disciplines</label>
           </div>
+
+          <div class="col-1">
+            <label>
+                <input type = 'radio' name="service_bond">
+                Yes
+            </label>
+            <label>
+                <input type = 'radio' name="service_bond">
+                No
+            </label><br>
+            <label class="form-label" for="form3Example3c">Service Bond</label>
+        </div>
+
         <!-- <div class="row">
             <div class="col-1">
                 <label>
@@ -639,7 +652,7 @@
       
     
 
-    <table width="100%">
+    <!-- <table width="100%">
         <tr>
           <td>
             <label>
@@ -719,7 +732,7 @@
           </td>
           
         </tr>
-      </table>
+      </table> -->
     </div>
 </div>
 </div>
@@ -754,7 +767,7 @@
 <script type="text/javascript">
   var arr = [];
   for (var i=0; i<5; i++){
-      var x = Math.floor(Math.random() * 100000000000);
+      var x = Math.floor(Math.random() * 100000000);
       arr.push(x);
   }
   document.getElementById("company_id").innerText = arr;
