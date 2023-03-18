@@ -485,6 +485,18 @@ def student_table():
     student = cur.fetchall()
     return render_template('all_tables/student-table.html', student=student)
 
+@app.route('/delete_admin_account/<person_id>', methods=['POST','GET'])
+def delete_admin_account(person_id):
+    if request.method == 'POST':
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
+        # cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
+        return redirect('/')
+    else: 
+        return redirect('/admin-dashboard/'+str(person_id))
+    
+
+
 @app.route('/delete-company/<person_id>', methods = ['GET', 'POST'])
 def delete_company(person_id):
     if request.method == 'POST':
