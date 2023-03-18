@@ -4,6 +4,7 @@ import yaml
 import json
 
 
+
 app = Flask(__name__)
 
 # Configure db
@@ -301,8 +302,15 @@ def company_dashboard(person_id):
 def admin_dashboard(person_id):
     return render_template('dashboard/admin_view.html', person_id=person_id)
 
-@app.route('/admin-profile/<person_id>')
+@app.route('/admin-profile/<person_id>', methods=['GET','POST'])
 def admin_profile(person_id):
+    if request.method == 'POST':
+        print(person_id)
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
+        # cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
+        redirect("/")
+    
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
     person = cur.fetchone()
@@ -488,6 +496,7 @@ def student_table():
 @app.route('/delete_admin_account/<person_id>', methods=['POST','GET'])
 def delete_admin_account(person_id):
     if request.method == 'POST':
+        print(person_id)
         cur = mysql.connection.cursor()
         cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
         # cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
