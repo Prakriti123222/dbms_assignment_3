@@ -1,295 +1,390 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
 
-<head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    
+    <script src="student.js"></script>
 
     <title>Student Registration</title>
-</head>
+  </head>
 
-<body class="container" style="background-color: #132f42;">
+  <body class="container" style="background-color: #132f42">
     <!-- <h1>{{value}}</h1> -->
-    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: #F9F871">Student Registration</p>
-    <p class="text-white text-center">Note: You can use the following ids for registration</p>
-    <p class="text-white text-center" id="student_id"></p>
-    <form class="mx-1 mx-md-4" method="POST" style="color: #FFF">
-        <div class="card">
-            <div class = "card-body" style="background-color: #00586C" padding = "16px">
-                <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
-                    Personal Details
-                </p>
-        <div class="row g-2">
+   
+    <p
+      class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"
+      style="color: #f9f871"
+    >
+      Student Registration
+    </p>
+    <form class="mx-1 mx-md-4" method="POST" style="color: #fff">
+      <div class="card">
+        <div class="card-body" style="background-color: #00586c" padding="16px">
+          <div class="row g-2">
             <div class="col-lg-6">
-                <input type="number" id="form3Example3c" class="form-control" name="person_id" required />
-                <label class="form-label" for="form3Example3c">Student ID <span style="color:red">*</span></label>
+              <input
+                type="number"
+                id="form3Example3c"
+                class="form-control"
+                name="person_id"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Student ID <span style="color: red">*</span></label
+              >
             </div>
 
             <div class="col-lg-6">
-                <input type="text" id="form3Example3c" class="form-control" name="first_name" required />
-                <label class="form-label" for="form3Example3c">First Name<span style="color:red">*</span></label>
+              <input
+                type="text"
+                id="form3Example3c"
+                class="form-control"
+                name="first_name"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >First Name<span style="color: red">*</span></label
+              >
             </div>
-        </div>
+          </div>
 
-        <div class="row g-2">
+          <div class="row g-2">
             <div class="col-lg-6">
-                <input type="text" id="form3Example3c" class="form-control" name="middle_name" />
-                <label class="form-label" for="form3Example3c">Middle Name</label>
+              <input
+                type="text"
+                id="form3Example3c"
+                class="form-control"
+                name="middle_name"
+              />
+              <label class="form-label" for="form3Example3c">Middle Name</label>
             </div>
 
             <div class="col-lg-6">
-                <input type="text" id="form3Example3c" class="form-control" name="last_name" />
-                <label class="form-label" for="form3Example3c">Last Name</label>
+              <input
+                type="text"
+                id="form3Example3c"
+                class="form-control"
+                name="last_name"
+              />
+              <label class="form-label" for="form3Example3c">Last Name</label>
             </div>
-        </div>
+          </div>
 
-
-        <div class="row g-2">
+          <div class="row g-2">
             <div class="col-lg-4">
-                <input type="number" id="form3Example3c" class="form-control" name="country_code" required />
-                <label class="form-label" for="form3Example3c">Country Code <span style="color:red">*</span></label>
+              <input
+                type="number"
+                id="form3Example3c"
+                class="form-control"
+                name="country_code"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Country Code <span style="color: red">*</span></label
+              >
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-8">
-                <input type="phone-number" id="form3Example3c" class="form-control" maxlength="10" name="mobile_number" required />
-                <label class="form-label" for="form3Example3c">Mobile Number <span style="color:red">*</span></label>
+              <input
+                type="phone-number"
+                id="form3Example3c"
+                class="form-control"
+                maxlength="10"
+                name="mobile_number"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Mobile Number <span style="color: red">*</span></label
+              >
             </div>
-        </div>
+          </div>
 
-        <div class="form-outline flex-fill mb-0 col-lg-12">
-            <input type="email" id="form3Example3c" class="form-control" name="email_id" required />
-            <label class="form-label" for="form3Example3c">Email id <span style="color:red">*</span></label>
-        </div>
+          <div class="form-outline flex-fill mb-0 col-lg-12">
+            <input
+              type="email"
+              id="form3Example3c"
+              class="form-control"
+              name="email_id"
+              required
+            />
+            <label class="form-label" for="form3Example3c"
+              >Email id <span style="color: red">*</span></label
+            >
+          </div>
 
-        <div class="form-outline flex-fill mb-0 col-lg-12">
-            <input type="file" id="form3Example3c" class="form-control" name="profile_photo" />
+          <div class="form-outline flex-fill mb-0 col-lg-12">
+            <input
+              type="file"
+              id="form3Example3c"
+              class="form-control"
+              name="profile_photo"
+            />
             <label class="form-label" for="file-upload">Profile Photo</label>
-        </div>
+          </div>
 
-        <div class="form-outline flex-fill mb-0 col-lg-12">
-            <input type="text" id="form3Example3c" class="form-control" name="password" required />
-            <label class="form-label" for="form3Example3c">Password <span style="color:red">*</span></label>
-        </div>
+          <div class="form-outline flex-fill mb-0 col-lg-12">
+            <input
+              type="text"
+              id="form3Example3c"
+              class="form-control"
+              name="password"
+              required
+            />
+            <label class="form-label" for="form3Example3c"
+              >Password <span style="color: red">*</span></label
+            >
+          </div>
 
-        <div class="row g-2">
+          <div class="row g-2">
             <div class="form-outline flex-fill mb-0 col-lg-5">
-                <input type="text" id="form3Example3c" class="form-control" name="zip_code" required />
-                <label class="form-label" for="form3Example3c">Zip Code <span style="color:red">*</span></label>
+              <input
+                type="text"
+                id="form3Example3c"
+                class="form-control"
+                name="nationality"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Nationality <span style="color: red">*</span></label
+              >
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="text" step="any" id="form3Example3c" class="form-control" name="city" required />
-                <label class="form-label" for="form3Example3c">City <span style="color:red">*</span></label>
+              <input
+                type="number"
+                step="any"
+                id="form3Example3c"
+                class="form-control"
+                name="cpi"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >CPI <span style="color: red">*</span></label
+              >
             </div>
 
-            <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="text" step="any" id="form3Example3c" class="form-control" name="state" required />
-                <label class="form-label" for="form3Example3c">State <span style="color:red">*</span></label>
-            </div>
-
-            <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="text" step="any" id="form3Example3c" class="form-control" name="address_line" required />
-                <label class="form-label" for="form3Example3c">Address Line <span style="color:red">*</span></label>
-            </div>
-        </div>
-
-        <div class="row g-2">
-            <div class="form-outline flex-fill mb-0 col-lg-5">
-                <input type="text" id="form3Example3c" class="form-control" name="nationality" required />
-                <label class="form-label" for="form3Example3c">Nationality <span style="color:red">*</span></label>
-            </div>
-
-            <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="number" step="any" id="form3Example3c" class="form-control" name="cpi" required />
-                <label class="form-label" for="form3Example3c">CPI <span style="color:red">*</span></label>
-            </div>
             <!-- convert into checkbox -->
-            <div class="form-outline flex-fill mb-0 col-lg-4" style="margin:0" style="padding:0">
-                <label>
-                    <input type = 'radio' name="backlogs">
-                    Yes
-                </label>
-                <label>
-                    <input type = 'radio' name="backlogs">
-                    No
-                </label><br>
-                <label class="form-label" for="form3Example3c">Backlog(s)</label>
-            </div>
-        </div>
-
-        <div class="row g-2">
-            <div class="form-outline flex-fill mb-0 col-lg-6">
-                <input type="date" id="form3Example3c" class="form-control" name="dob" required />
-                <label class="form-label" for="form3Example3c">DOB <span style="color:red">*</span></label>
-            </div>
-
-            <div class="form-outline flex-fill mb-0 col-lg-3">
-                <!-- <input type="text" id="form3Example3c" class="form-control" name="category" required /> -->
-                <select class="form-select" id="inputGroupSelect01" required>
-                    <option selected>Choose...</option>
-                    <option value="EWS">EWS</option>
-                    <option value="OBC">OBC</option>
-                    <option value="PWD">PWD</option>
-                    <option value="ST">ST</option>
-                    <option value="SC">SC</option>
-                  </select>
-                  <label class="form-label" for="form3Example3c">Category <span style="color:red">*</span></label>
-            </div>
-
-            <div class="form-outline flex-fill mb-0 col-lg-3">
-                <input type="text" id="form3Example3c" class="form-control" name="gender" required />
-                <label class="form-label" for="form3Example3c">Gender <span style="color:red">*</span></label>
-            </div>
-        </div>
-
-        <div class="row g-2">
             <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="number" id="form3Example3c" class="form-control" name="experience" value="0" />
-                <label class="form-label" for="form3Example3c">Professional Experience (months)</label>
+              <input
+                type="number"
+                id="form3Example3c"
+                class="form-control"
+                name="backlogs"
+                value="0"
+              />
+              <label class="form-label" for="form3Example3c">Backlog(s)</label>
+            </div>
+          </div>
+
+          <div class="row g-2">
+            <div class="form-outline flex-fill mb-0 col-lg-6">
+              <input
+                type="date"
+                id="form3Example3c"
+                class="form-control"
+                name="dob"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >DOB <span style="color: red">*</span></label
+              >
+            </div>
+
+            <div class="form-outline flex-fill mb-0 col-lg-3">
+              <input
+                type="text"
+                id="form3Example3c"
+                class="form-control"
+                name="category"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Category <span style="color: red">*</span></label
+              >
+            </div>
+
+            <div class="form-outline flex-fill mb-0 col-lg-3">
+              <input
+                type="text"
+                id="form3Example3c"
+                class="form-control"
+                name="gender"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Gender <span style="color: red">*</span></label
+              >
+            </div>
+          </div>
+
+          <div class="row g-2">
+            <div class="form-outline flex-fill mb-0 col-lg-4">
+              <input
+                type="number"
+                id="form3Example3c"
+                class="form-control"
+                name="experience"
+                value="0"
+              />
+              <label class="form-label" for="form3Example3c"
+                >Professional Experience (months)</label
+              >
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-8">
-                <input type="email" id="form3Example3c" class="form-control" name="personal_email" required />
-                <label class="form-label" for="form3Example3c">Personal Email ID <span style="color:red">*</span></label>
+              <input
+                type="email"
+                id="form3Example3c"
+                class="form-control"
+                name="personal_email"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Personal Email ID <span style="color: red">*</span></label
+              >
             </div>
-        </div>
+          </div>
 
-        <div class="row g-2">
+          <div class="row g-2">
             <!-- add a dropdown for curr program -->
             <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="text" id="form3Example3c" class="form-control" name="curr_program" required />
-                <label class="form-label" for="form3Example3c">Current Program <span style="color:red">*</span></label>
+              <!-- <input
+                type="text"
+                id="form3Example3c"
+                class="form-control"
+                name="curr_program"
+                required
+              /> -->
+              <!-- <select
+                id="current_program"
+                name="current_program"
+                onchange="updateMajorDisciplines()"
+              >
+                <option value="">--Select--</option>
+                <option value="BTECH">B.Tech.</option>
+                <option value="MTECH">M.Tech.</option>
+                <option value="MSC">M.Sc.</option>
+              </select>
+              <div id="major-disciplines"></div>
+              <label class="form-label" for="form3Example3c"
+                >Current Program <span style="color: red">*</span></label
+              > -->
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="date" id="form3Example3c" class="form-control" name="joining_date" required />
-                <label class="form-label" for="form3Example3c">Date of Joining <span style="color:red">*</span></label>
+              <input
+                type="date"
+                id="form3Example3c"
+                class="form-control"
+                name="joining_date"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Date of Joining <span style="color: red">*</span></label
+              >
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-4">
-                <input type="month" id="form3Example3c" class="form-control" name="year_of_graduation" required />
-                <label class="form-label" for="form3Example3c">Year of Graduation <span style="color:red">*</span></label>
+              <input
+                type="month"
+                id="form3Example3c"
+                class="form-control"
+                name="year_of_graduation"
+                required
+              />
+              <label class="form-label" for="form3Example3c"
+                >Year of Graduation <span style="color: red">*</span></label
+              >
             </div>
-        </div>
+          </div>
 
-        <!-- take file as input here, make it required -->
-        <div class="form-outline flex-fill mb-0 col-lg-12">
-            <input type="file" id="form3Example3c" class="form-control" name="resume" required/>
-            <label class="form-label" for="file-upload">Resume <span style="color:red">*</span></label>
-        </div>
+          <!-- take file as input here, make it required -->
+          <div class="form-outline flex-fill mb-0 col-lg-12">
+            <input
+              type="file"
+              id="form3Example3c"
+              class="form-control"
+              name="resume"
+              required
+            />
+            <label class="form-label" for="file-upload"
+              >Resume <span style="color: red">*</span></label
+            >
+          </div>
 
-        <div class="row g-2">
+          <div class="row g-2">
             <!-- add a dropdown for curr program -->
             <div class="form-outline flex-fill mb-0 col-lg-6">
-                <input type="text" id="form3Example3c" class="form-control" name="major_disc" required />
-                <label class="form-label" for="form3Example3c">Major Disciplines <span style="color:red">*</span></label>
+              <select id="current_program" name="major_discipline"
+              onchange="updateMajorDisciplines()">
+                <option value="">--Select--</option>
+                <option value="BTECH">B.Tech.</option>
+                <option value="MTECH">M.Tech.</option>
+                <option value="MSC">M.Sc.</option>
+              </select>
+              <div id="major-disciplines"></div>
+              <!-- <input type="text" id="form3Example3c" class="form-control" name="major_disc" required /> -->
+              <label class="form-label" for="form3Example3c"
+                >Major Disciplines <span style="color: red">*</span></label
+              >
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-6">
-                <input type="text" id="form3Example3c" class="form-control" name="minor_disc" required />
-                <label class="form-label" for="form3Example3c">Minor Disciplines <span style="color:red">*</span></label>
+              <button id="minor_discipline" name="minor_disciplines"
+              onclick="updateMinorDisciplines()">
+              </button>
+              <div id="minor-disciplines"></div>
+              <label class="form-label" for="form3Example3c"
+                >Minor Disciplines <span style="color: red">*</span></label
+              >
             </div>
+          </div>
         </div>
-    </div>
-    </div>
+      </div>
 
-    <br><br>
+      <div class="form-check d-flex justify-content-center mb-5">
+        <input
+          class="form-check-input me-2"
+          type="checkbox"
+          value=""
+          id="form2Example3c"
+        />
+        <label class="form-check-label" for="form2Example3">
+          I agree all statements in <a href="#!">Terms of service</a>
+        </label>
+      </div>
 
-    <div class="card">
-        <div class = "card-body" style="background-color: #00586C" padding = "16px">
-            <p class="text-left h3 fw-bold mb-5 mx-1 mx-n-auto mt-4" style="color: #F9F871">
-                Educational Details
-            </p>
-    <div class="row g-2">
-        <div class="col-lg-6">
-            <select class="form-select" id="inputGroupSelect01" required>
-                <option selected>Choose...</option>
-                <option value="ICSE">ICSE</option>
-                <option value="CBSE">CBSE</option>
-                <option value="State Board">State Board</option>
-                <option value="OTHER">OTHER</option>
-              </select>
-            <label class="form-label" for="form3Example3c">Board of Tenth<span style="color:red">*</span></label>
-        </div>
-
-        <div class="col-lg-6">
-            <select class="form-select" id="inputGroupSelect01" required>
-                <option selected>Choose...</option>
-                <option value="ICSE">ICSE</option>
-                <option value="CBSE">CBSE</option>
-                <option value="State Board">State Board</option>
-                <option value="OTHER">OTHER</option>
-              </select>
-            <label class="form-label" for="form3Example3c">Board of Twelth<span style="color:red">*</span></label>
-        </div>
-    </div>
-
-    <div class="row g-2">
-        <div class="col-lg-6">
-            <input type="number" id="form3Example3c" class="form-control" name="tenth_percentage " />
-            <label class="form-label" for="form3Example3c">Tenth Percentage <span style="color:red">*</span></label>
-        </div>
-
-        <div class="col-lg-6">
-            <input type="number" id="form3Example3c" class="form-control" name="twelfth_percentage " />
-            <label class="form-label" for="form3Example3c">Twelth Percentage <span style="color:red">*</span></label>
-        </div>
-    </div>
-
-
-    <div class="row g-2">
-        <div class="col-lg-4">
-            <input type="text" id="form3Example3c" class="form-control" name="competitive_exam_name " required />
-            <label class="form-label" for="form3Example3c">Competetive Exam Name <span style="color:red">*</span></span></label>
-        </div>
-
-        <div class="col-lg-4">
-            <input type="int" id="form3Example3c" class="form-control" name="competitive_exam_rank" required />
-            <label class="form-label" for="form3Example3c">Competetive Exam Rank <span style="color:red">*</span></label>
-        </div>
-    </div>
-</div>
-</div>
-
-        <div class="form-check d-flex justify-content-center mb-5">
-            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-            <label class="form-check-label" for="form2Example3">
-                I agree all statements in <a href="#!">Terms of service</a>
-            </label>
-        </div>
-
-        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-            <button type="submit" class="btn btn-primary btn-lg">Register</button>
-        </div>
-
+      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+      </div>
     </form>
 
     <script type="text/javascript">
-        window.onload = function () {
-            if ('{{ value }}'){
-                alert('{{ value }}');
-            }
+      window.onload = function () {
+        if ("{{ value }}") {
+          alert("{{ value }}");
         }
-    </script>
-
-    <script type="text/javascript">
-        var arr = [];
-        for (var i=0; i<5; i++){
-            var x = Math.floor(Math.random() * 100000000);
-            arr.push(x);
-        }
-        document.getElementById("student_id").innerText = arr;
+      };
     </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
+    <script src="student.js"></script>
+  </body>
 </html>

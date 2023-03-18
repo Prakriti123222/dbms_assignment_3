@@ -1,4 +1,10 @@
 <style>
+  body {
+    margin: 0;
+    background: #e2e5e5;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+}
   .person_details > .row{
     margin-left: 20px;
     margin-right: 20px;
@@ -26,13 +32,13 @@
   .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   /* height: 100vh; */
 }
 </style>
 
-<section class="container text-center"  style="background-color: #f0f2f3;">  
+<section class="container text-center  style="background-color: #00586C">  
   <!-- {{address}}
   <br>
   {{education}} -->
@@ -43,9 +49,9 @@
             <div style="display: flex;flex-direction: column;width: max-content;">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px;">
-              <div class="my-3 d-flex" style="width: max-content;margin: auto;">{{person[1]}}</div>
+              <div class="my-3 d-flex" style="width: max-content;margin: auto; font-weight: bold; color: #080808;" >{{person[1]}}</div>
             </div>
-            <p class="text-muted mb-1">Student ID: {{person[0]}}</p>
+            <p class="text-muted mb-1">ID: {{person[0]}}</p>
             <p class="text-muted mb-4">email: {{person[5]}}</p>
             <!-- <div class="d-flex justify-content-center mb-2">
               <button type="button" class="btn btn-primary">Follow</button>

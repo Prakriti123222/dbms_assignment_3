@@ -1,18 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    this is admin profile of 
-   <br> 
-    {{person}}
+<style>
+    .person_details > .row{
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .person_details > .row > :first-child{
+      font-weight: bold; 
+      color: #1342F2;
+    }
+    .person_details > .row > :last-child{
+      
+      color: #0a0a0a;;
+    }
+    .ed_details > .row{
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .ed_details > .row > :first-child{
+      font-weight: bold; 
+      color: #1342F2;
+    }
+    .ed_details > .row > :last-child{
+      
+      color: #0a0a0a;;
+    }
+    .container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /* height: 100vh; */
+  }
+  </style>
+  
+  <section class="container text-center  style="background-color: #f0f2f3;">  
+    <!-- {{address}}
     <br>
-    {{admin}}
-    <br>
-    {{address}}
-</body>
-</html>
+    {{education}} -->
+      <div class="row" style="display: flex;">
+        <div class="col-lg-4" style="margin-right: 0rem;">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <div style="display: flex;flex-direction: column;width: max-content;">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                  class="rounded-circle img-fluid" style="width: 150px;">
+                <div class="my-3 d-flex" style="width: max-content;margin: auto;">{{person[1]}}</div>
+              </div>
+              <p class="text-muted mb-1">ID: {{person[0]}}</p>
+              <p class="text-muted mb-4">email: {{person[5]}}</p>
+              <!-- <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary">Follow</button>
+                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              </div> -->
+            </div>
+          </div>
+          
+        </div>
+        <!-- <hr> -->
+        <div class="col-lg-8" style="display:inline">
+          <div class="card mb-4", style="margin-left: 0ch;">
+            <!-- <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 90vh;"> -->
+            <h1> Profile </h1>
+            <!-- </div> -->
+            </div>
+  
+        <div class="col-lg-8" style="display: flex;">
+          <div class="card mb-4">
+            <div class="card-body person_details" style="display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 70vh;">
+            
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">First Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{person[1]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Middle Name</p>
+                </div>
+                <div class="col-sm-9">
+                    {%if person[2] %}
+                    <p class="text-muted mb-0">-</p>
+                    {% else %}
+                    <p class="text-muted mb-0">{{person[2] }}</p> 
+                    {% endif %}
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Last Name</p>
+                </div>
+                <div class="col-sm-9">
+                    {%if person[3] %}
+                    <p class="text-muted mb-0">-</p>
+                    {% else %}
+                    <p class="text-muted mb-0">{{person[3] }}</p>
+                    {% endif %}
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Contact</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">({{person[4]['country_code']}}) {{person[4]['number']}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Institute Email Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{person[5]}}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Designation</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{admin[1]}}</p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{address[4]}} , {{address[2]}} (Zip: {{address[1]}} ) </p>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">State</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{address[3]}} </p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Nationality</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{person[8]}}</p>
+                </div>
+              </div>
+              
+              
+             <form method="POST">
+              <button class="btn btn-danger" style="background-color: red;" type="submit" href="/delete_admin_account/{{person[0]}}">Delete Account</button>
+             </form>
+              
+              
+          </div>
+          <hr>
+  
+          
+          
+  </section>
