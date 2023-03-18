@@ -359,13 +359,173 @@ def student_profile(person_id):
         return "The student is not present"
     
 
-@app.route('/admin-add-company')
-def admin_add_company():
+@app.route('/admin-add-company/<person_id>',methods=['GET', 'POST'])
+def admin_add_company(person_id):
+    if request.method == 'POST':
+        # Fetch form data
+        userDetails = request.form
+        email_id = userDetails['email_id'],
+        hr_status = userDetails['status'], 
+        company_name = userDetails['company_name'], 
+        # print(email_id, hr_status, company_name)
+        try:
+            cur = mysql.connection.cursor()
+            sql = "insert into hr (email_id, hr_status, company_name, parent_id) VALUES (%s, %s, %s, %s)"
+            values = (email_id[0],hr_status[0], company_name[0], person_id)
+            print(values)
+            cur.execute(sql, values)
+            mysql.connection.commit() 
+            print("Data for hr_invited inserted successfully")          
+            return redirect("/admin-dashboard/"+str(person_id))  
+            
+        except mysql.connection.Error as error:
+            # print("Failed to insert data into MySQL table: {}".format(error))
+            mysql.connection.rollback()  # Roll back changes in case of error
+            # return "An error occurred while inserting data, Error is {}".format(error)
+            # print(error)
+            error = "{}".format(error)
+            return "An occurred please try again later"
+          
+    
     return render_template('dashboard/add_company.html')
 
-@app.route('/edit-company-status')
-def edit_company_status():
+@app.route('/edit-company-status/<person_id>', methods = ['POST', 'GET'])
+def edit_company_status(person_id):
+    if request.method == 'POST':
+        # Fetch form data
+        userDetails = request.form
+        email_id = userDetails['email_id'],
+        hr_status = userDetails['new_status'], 
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute("UPDATE hr SET hr_status = %s WHERE email_id = %s", [hr_status, email_id])
+            mysql.connection.commit() 
+            print("Data for hr_invited updated successfully")          
+            return redirect("/admin-dashboard/"+str(person_id))  
+            
+        except mysql.connection.Error as error:
+            # print("Failed to insert data into MySQL table: {}".format(error))
+            mysql.connection.rollback()  # Roll back changes in case of error
+            # return "An error occurred while inserting data, Error is {}".format(error)
+            # print(error)
+            error = "{}".format(error)
+            return "An occurred please try again later"      
     return render_template('dashboard/edit-company-status.html')
+
+@app.route('/all_tables')
+def get_tables():
+    return render_template('all_tables.html')
+
+@app.route('/address-table')
+def address_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM address")
+    address = cur.fetchall()
+    return render_template('all_tables/address_table.html', address=address)
+
+@app.route('/admin-table')
+def admin_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM administrator")
+    admin = cur.fetchall()
+    return render_template('all_tables/admin_table.html', admin=admin)
+
+@app.route('/company-details-table')
+def company_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM company_details")
+    company_details = cur.fetchall()
+    return render_template('all_tables/company-details-table.html', company_details=company_details)
+
+
+@app.route('/educational-details-table')
+def educational_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM company_details")
+    educational_details = cur.fetchall()
+    return render_template('all_tables/educational-details-table.html', educational_details=educational_details)
+
+
+@app.route('/hr-table')
+def hr_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM hr")
+    hr = cur.fetchall()
+    return render_template('all_tables/hr-table.html',hr=hr)
+
+
+@app.route('/job-profile-table')
+def job_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM job_profile")
+    job_profile = cur.fetchall()
+    return render_template('all_tables/job-profile-table.html', job_profile=job_profile)
+
+
+@app.route('/person-table')
+def person_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM job_profile")
+    person = cur.fetchall()
+    return render_template('all_tables/person-table.html',person=person)
+
+
+@app.route('/program-details')
+def program_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM prog_details")
+    prog_details = cur.fetchall()
+    return render_template('all_tables/program-details.html',prog_details=prog_details)
+
+
+@app.route('/student-table')
+def student_table():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM student")
+    student = cur.fetchall()
+    return render_template('all_tables/student-table.html', student=student)
+
+@app.route('/delete_admin_account/<person_id>', methods=['POST','GET'])
+def delete_admin_account(person_id):
+    if request.method == 'POST':
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
+        # cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
+        return redirect('/')
+    else: 
+        return redirect('/admin-dashboard/'+str(person_id))
+    
+
+
+@app.route('/delete-company/<person_id>', methods = ['GET', 'POST'])
+def delete_company(person_id):
+    if request.method == 'POST':
+        # Fetch form data
+        userDetails = request.form
+        email_id = userDetails['email_id'],
+        cur = mysql.connection.cursor()
+        try:
+            cur.execute("Select * from hr where email_id = %s", [email_id])
+            hr = cur.fetchone()
+            # print(hr)
+            if (hr):
+                cur.execute("DELETE FROM hr WHERE email_id = %s", [email_id])
+                mysql.connection.commit() 
+                print("Data for hr deleted successfully")          
+                return redirect("/admin-dashboard/"+str(person_id))  
+            else:
+                error = "Email-ID do not exists"
+                return render_template('dashboard/delete_company.html', error = error)    
+            
+        except mysql.connection.Error as error:
+            # print("Failed to insert data into MySQL table: {}".format(error))
+            mysql.connection.rollback()  # Roll back changes in case of error
+            # return "An error occurred while inserting data, Error is {}".format(error)
+            # print(error)
+            error = "{}".format(error)
+            return render_template('dashboard/delete_company.html', error = error)   
+    return render_template('dashboard/delete_company.html')
+
 
 @app.route('/student-all-jobs')
 def student_all_jobs():

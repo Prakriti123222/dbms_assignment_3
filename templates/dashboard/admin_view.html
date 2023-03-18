@@ -10,12 +10,14 @@
 
     <title>Admin Dashboard</title>
   </head>
-  <body>
+  <body class="container text-center">
     <div class="d-grid gap-2 d-md-block container text-center">
         <a class="btn btn-primary" href="/admin-profile/{{person_id}}">Profile</a>
-        <a class="btn btn-primary" href="/admin-add-company">Add Company</a>
-        <a class="btn btn-primary" href="/edit-company-status">Edit Status</a>
-      </div>
+        <a class="btn btn-primary" href="/admin-add-company/{{person_id}}">Add Company</a>
+        <a class="btn btn-primary" href="/edit-company-status/{{person_id}}">Edit Status</a>
+        <a class="btn btn-primary" href="/delete-company/{{person_id}}">Delete Company</a>
+        
+    </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
