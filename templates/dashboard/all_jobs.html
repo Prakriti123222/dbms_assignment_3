@@ -1,26 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>All Jobs</title>
+</head>
+<body class="container" style="background-color: #132f42;">
 <div class="container">
+  <div class="card">
+    <div class = "card-body" style="background-color: #00586C" padding = "16px">
   <div class="table-wrapper">
-    <table>
+    <table width="100%" style="color: #FFF">
         <thead>
-      <tr> 
-        <div class="card-body column_head">
-        <td style="font-weight: bold;"> Job Id</td>
-        <td style="font-weight: bold;">Designation</td>
-        <td style="font-weight: bold;">Location</td>
-        <td style="font-weight: bold;">Current Status</td>
-        <td style="font-weight: bold;">More Details</td>
-          </div>
-      </tr>
+          <!-- <div class="card" background-style="color: #FFF"> -->
+      <tr style="color: yellow"> 
+        
+        
+        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">Job Id</div> </td>
+        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">Designation</div></td>
+        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">Location</div></td>
+        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">Current Status</div></td>
+        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">More Details</div></td>
+          
+      
+    </tr>
+    <!-- </div>  -->
     </thead>
         <tbody>
             {% for job in jobDetails %}
         <tr>
-          <td> {{job[0]}} </td>
-          <td> {{job[1]}} </td>
-          <td> {{job[3]}} </td>
-          <td> {{job[11]}} </td>
+          <td><div class="d-flex flex-row align-items-center mb-4"> {{job[0]}} </div></td>
+          <td><div class="d-flex flex-row align-items-center mb-4">{{job[1]}} </div> </td>
+          <td><div class="d-flex flex-row align-items-center mb-4">{{job[3]}} </div> </td>
+          <td><div class="d-flex flex-row align-items-center mb-4">{{job[11]}}</div>  </td>
           <td> <a href="/jobs/{{job[0]}}" type="button">See More</a> </td>
-          <!-- --- 22 indexes -->
+          
         </tr>
         {% endfor %}
 
@@ -29,8 +50,12 @@
     </table>
   </div>
 </div>
+</div>
+</div>
+</body>
+</html>
 
-<style>
+<!-- <style>
 body {
     margin: 0;
     background: linear-gradient(45deg, #49a09d, #dae2fd);
@@ -77,4 +102,4 @@ th {
     text-align: center;
   
 }
-</style>
+</style> -->
