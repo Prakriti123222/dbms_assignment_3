@@ -46,19 +46,4 @@ function updateMajorDisciplines() {
           a.innerHTML += '<label><input type="checkbox" name="minor" value="civil"> Civil Engineering</label><br>';
           a.innerHTML += '<label><input type="checkbox" name="minor" value="materials"> Materials Science and Engineering</label><br>';
       }
-  
-      // Add the major discipline options based on the selected program
-      
-      // } else if (selectedProgram === "MTECH") {
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="mechanical"> Mechanical Engineering</label><br>';
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="electrical"> Electrical Engineering</label><br>';
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="computer"> Computer Science and Engineering</label><br>';
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="chemical"> Chemical Engineering</label><br>';
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="civil"> Civil Engineering</label><br>';
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="materials"> Materials Science and Engineering</label><br>';
-      // } else if (selectedProgram === "MSC") {
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="physics"> Physics</label><br>';
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="chemistry"> Chemistry</label><br>';
-      //     majorDisciplinesContainer.innerHTML += '<label><input type="checkbox" name="major" value="maths"> Mathematics</label><br>';
-      // }
   }
