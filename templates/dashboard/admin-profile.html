@@ -164,7 +164,7 @@
               
               
              <form method="POST">
-              <button class="btn btn-danger" style="background-color: red;" type="submit" href="/delete_admin_account/{{person[0]}}">Delete Account</button>
+              <button class="btn btn-danger" style="background-color: red;" type="submit" href="/delete_admin_account/{{person[0]}}" onsubmit="()=>changeLocation">Delete Account</button>
              </form>
               
               
@@ -174,3 +174,8 @@
           
           
   </section>
+  <script>
+    function changeLocation(){
+      window.location.replace('/'); 
+    }
+</script>
