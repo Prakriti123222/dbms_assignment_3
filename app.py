@@ -21,6 +21,7 @@ student_cpi = 0
 
 @app.route('/', methods=['GET','POST'])
 def login():
+    print(request)
     if request.method == 'POST':
         # Fetch form data
         userDetails = request.form
@@ -55,7 +56,6 @@ def login():
             # invalid login, show error message
             error = 'Invalid username or password'
             return render_template('login/login.html', error=error)
-        
     else:
         return render_template('login/login.html')
 
