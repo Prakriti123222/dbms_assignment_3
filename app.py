@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, url_for
 from flask_mysqldb import MySQL
 import yaml
 import json
 
 
-
 app = Flask(__name__)
+
 
 # Configure db
 db = yaml.safe_load(open('db.yaml'))
@@ -35,12 +35,19 @@ def login():
 
         if user:
             # successful login, redirect to home page
-            print(user[9])
+            # print(user[9])
             if (user[9]=="student" or user[9]=="Student"):
+                session['username'] = request.form['user_id']
+                session['logged_in'] = True
                 return redirect('/student-dashboard/'+str(user_id))
             elif (user[9]=="admin" or user[9]=="Admin"):
+                session['username'] = request.form['user_id']
+                session['logged_in'] = True
+                print(session['username'])
                 return redirect('/admin-dashboard/'+str(user_id))
             elif (user[9]=="company_rep"):
+                session['username'] = request.form['user_id']
+                session['logged_in'] = True
                 return redirect('/company-dashboard/'+str(user_id))
             else:
                 return "you are either company rep or admin or an unregistered student"
@@ -175,6 +182,8 @@ def hr_reg():
 def student_reg():
     if request.method == 'POST':
         userDetails = request.form
+        session['username'] = request.form['person_id']
+        session['logged_in'] = True
         person_id = userDetails['person_id'],
         first_name = userDetails['first_name'],
         middle_name = userDetails['middle_name'],
@@ -241,6 +250,8 @@ def student_reg():
 def admin_reg():
     if request.method == 'POST':
         userDetails = request.form
+        session['username'] = request.form['person_id']
+        session['logged_in'] = True
         person_id = userDetails['person_id'],
         first_name = userDetails['first_name'],
         middle_name = userDetails['middle_name'],
@@ -292,39 +303,53 @@ def admin_reg():
 
 @app.route('/student-dashboard/<person_id>')
 def student_dashboard(person_id):
-    return render_template('dashboard/student_view.html', person_id=person_id)
+    if session.get('logged_in'):
+        return render_template('dashboard/student_view.html', person_id=person_id)
+    return redirect('/')
 
 @app.route('/company-dashboard/<person_id>')
 def company_dashboard(person_id):
-    return render_template('dashboard/company_view.html', person_id=person_id)
+    if session.get('logged_in'):
+        return render_template('dashboard/company_view.html', person_id=person_id)
+    return redirect('/')
 
 @app.route('/admin-dashboard/<person_id>')
 def admin_dashboard(person_id):
-    return render_template('dashboard/admin_view.html', person_id=person_id)
+    if session.get('logged_in'):
+        return render_template('dashboard/admin_view.html', person_id=person_id)
+    return redirect('/')
 
 @app.route('/admin-profile/<person_id>', methods=['GET','POST'])
 def admin_profile(person_id):
     if request.method == 'POST':
-        print(person_id)
+
         cur = mysql.connection.cursor()
         cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
-        # cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
-        redirect("/")
-    
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
-    person = cur.fetchone()
-    cur.execute("SELECT * FROM administrator WHERE person_id=%s",[person_id])
-    admin = cur.fetchone() 
-    cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
-    address = cur.fetchone() 
-    person = list(person)
-    person[4] = json.loads(person[4])
-    person = tuple(person)
-    if person and admin:
-        return render_template('dashboard/admin-profile.html', person=person, admin=admin, address=address)
+        cur.execute("DELETE FROM person WHERE person_id = %s", [person_id])
+        if cur.rowcount > 0:
+            mysql.connection.commit()
+            session.clear()
+            # return redirect('/')
+            app.redirect('/')
+            return render_template('login/login.html')
+        else:
+            return("Deletion was not successful")
+           
     else:
-        return "The admin is not present"
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
+        person = cur.fetchone()
+        cur.execute("SELECT * FROM administrator WHERE person_id=%s",[person_id])
+        admin = cur.fetchone() 
+        cur.execute("SELECT * FROM address WHERE person_id=%s",[person_id])
+        address = cur.fetchone() 
+        person = list(person)
+        person[4] = json.loads(person[4])
+        person = tuple(person)
+        if person and admin:
+            return render_template('dashboard/admin-profile.html', person=person, admin=admin, address=address)
+        else:
+            return "The admin is not present"
     
 @app.route('/company-profile/<person_id>')
 def company_profile(person_id):
@@ -473,7 +498,7 @@ def job_table():
 @app.route('/person-table')
 def person_table():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM job_profile")
+    cur.execute("SELECT * FROM person")
     person = cur.fetchall()
     return render_template('all_tables/person-table.html',person=person)
 
@@ -605,5 +630,13 @@ def users():
         userDetails = cur.fetchall()
         return render_template('users.html',userDetails=userDetails)
 
+app.secret_key = "secret key"
+
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'no-store'
+    return response
+
 if __name__ == '__main__':
+
     app.run(debug=True)
