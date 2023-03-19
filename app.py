@@ -16,8 +16,6 @@ app.config['MYSQL_DB'] = db['mysql_db']
 
 mysql = MySQL(app)
 
-# global variables
-student_cpi = 0
 
 @app.route('/', methods=['GET','POST'])
 def login():
@@ -44,7 +42,7 @@ def login():
             elif (user[9]=="admin" or user[9]=="Admin"):
                 session['username'] = request.form['user_id']
                 session['logged_in'] = True
-                print(session['username'])
+                # print(session['username'])
                 return redirect('/admin-dashboard/'+str(user_id))
             elif (user[9]=="company_rep"):
                 session['username'] = request.form['user_id']
@@ -67,7 +65,7 @@ def register():
         userDetails = request.form
         print(userDetails)
         role = userDetails['role']
-        print(role)
+        # print(role)
         if (role=="student"):
             return redirect('/student-registration')
         elif (role=="company_rep"):
@@ -320,23 +318,8 @@ def admin_dashboard(person_id):
         return render_template('dashboard/admin_view.html', person_id=person_id)
     return redirect('/')
 
-@app.route('/admin-profile/<person_id>', methods=['GET','POST'])
+@app.route('/admin-profile/<person_id>', methods=['GET'])
 def admin_profile(person_id):
-    if request.method == 'POST':
-
-        cur = mysql.connection.cursor()
-        cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
-        cur.execute("DELETE FROM person WHERE person_id = %s", [person_id])
-        if cur.rowcount > 0:
-            mysql.connection.commit()
-            session.clear()
-            # return redirect('/')
-            app.redirect('/')
-            return render_template('login/login.html')
-        else:
-            return("Deletion was not successful")
-           
-    else:
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM person WHERE person_id=%s",[person_id])
         person = cur.fetchone()
@@ -387,7 +370,7 @@ def student_profile(person_id):
     person = list(person)
     person[4] = json.loads(person[4])
     person = tuple(person)
-    if person and student and address:
+    if person and student:
         return render_template('dashboard/student-profile.html', person=person, student=student, address=address, education=education)
     else:
         return "The student is not present"
@@ -445,6 +428,37 @@ def edit_company_status(person_id):
             error = "{}".format(error)
             return "An occurred please try again later"      
     return render_template('dashboard/edit-company-status.html')
+
+@app.route('/update-details/<person_id>', methods=['GET','POST'])
+def update_cpi(person_id):
+    if request.method == 'POST':
+        # Fetch form data
+        userDetails = request.form
+        newcpi = userDetails['cpi']
+        experience = userDetails['experience']
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute("UPDATE student SET cpi = %s, professional_experience=%s WHERE person_id = %s", [newcpi, experience, person_id])
+            mysql.connection.commit() 
+            # print("Data for cpi updated successfully")          
+            # alert = "Data updated succcessfully"
+            # url = f'/student-profile/{person_id}'
+            # return redirect(url_for(url, alert=alert))  
+            # return redirect(url_for(url, alert=alert))
+            return redirect("/student-profile/"+str(person_id)) 
+            
+        except mysql.connection.Error as error:
+            # print("Failed to insert data into MySQL table: {}".format(error))
+            mysql.connection.rollback()  # Roll back changes in case of error
+            # return "An error occurred while inserting data, Error is {}".format(error)
+            # print(error)
+            error = "{}".format(error)
+            # return "An occurred please try again later"  
+            alert = "Some error occurred please try again later"
+            return redirect("/student-profile/"+str(person_id))   
+           
+    return render_template('dashboard/update_cpi.html')
+
 
 @app.route('/all_tables')
 def get_tables():
@@ -519,16 +533,9 @@ def student_table():
     student = cur.fetchall()
     return render_template('all_tables/student-table.html', student=student)
 
-@app.route('/delete_admin_account/<person_id>', methods=['POST','GET'])
-def delete_admin_account(person_id):
-    if request.method == 'POST':
-        print(person_id)
-        cur = mysql.connection.cursor()
-        cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
-        # cur.execute("DELETE FROM administrator WHERE person_id = %s", [person_id])
-        return redirect('/')
-    else: 
-        return redirect('/admin-dashboard/'+str(person_id))
+@app.route('/delete_account/<person_id>', methods=['POST','GET'])
+def delete_account(person_id):
+    return render_template('delete_account.html')
     
 
 
@@ -617,11 +624,35 @@ def student_eligible_jobs(person_id):
     else:
         return "No such person exists"
     
-    
+@app.route('/rename',methods=['GET','POST'])
+def rename():
+    if (request.method=='POST'):
+        details = request.form
+        name1 = details['name1']
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'placement_management_system'")
+        tables = cur.fetchall()
+        print(tables[0][0])
+        table_name = tables[0][0]
+        new_name = name1
+        query = f"ALTER TABLE {table_name} RENAME TO {new_name}"
+        cur.execute(query)
+        cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'placement_management_system'")
+        tables1 = cur.fetchall()
+        query = f"ALTER TABLE {new_name} RENAME TO {table_name}"
+        cur.execute(query)
+        return render_template('rename_table.html', tables = tables, tables1=tables1)
 
-@app.route('/student-applied-jobs')
-def student_applied_jobs():
-    return render_template('dashboard/applied_jobs.html')
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'placement_management_system'")
+    tables = cur.fetchall()
+    return render_template('rename_table.html', tables = tables)
+    
+        
+
+# @app.route('/student-applied-jobs')
+# def student_applied_jobs():
+#     return render_template('dashboard/applied_jobs.html')
     
 @app.route('/users')
 def users():
