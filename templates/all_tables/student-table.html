@@ -77,51 +77,51 @@
       </p>
     </div>
 
-    <div class="container my-5">
+    <!-- <div class="container my-5"> -->
       <div class="text-center rectangle mx-auto top-rec row text-row">
         <div class="col">
-          <h4>Student ID</h4>
+          <h6>Student ID</h6>
         </div>
         <div class="col">
-          <h4>CPI</h4>
+          <h6>CPI</h6>
         </div>
         <div class="col">
-          <h4>Backlogs</h4>
+          <h6>Backlogs</h6>
         </div>
         <div class="col">
-          <h4>Category</h4>
+          <h6>Category</h6>
         </div>
         <div class="col">
-          <h4>Gender</h4>
+          <h6>Gender</h6>
         </div>
         <div class="col">
-          <h4>DOB</h4>
+          <h6>DOB</h6>
         </div>
         <div class="col">
-          <h4>Professional Experience</h4>
+          <h6>Professional Experience</h6>
         </div>
         <div class="col">
-          <h4>Personal Email ID</h4>
+          <h6>Personal Email ID</h6>
         </div>
         <div class="col">
-          <h4>Year of Graduation</h4>
+          <h6>Year of Graduation</h6>
         </div>
         <div class="col">
-          <h4>Current Program</h4>
+          <h6>Current Program</h6>
+        </div>
+        <!-- <div class="col">
+          <h6>CV</h6>
         </div>
         <div class="col">
-          <h4>CV</h4>
+          <h6>Major Disciplines</h6>
         </div>
         <div class="col">
-          <h4>Major Disciplines</h4>
-        </div>
+          <h6>Minor Disciplines</h6>
+        </div> -->
         <div class="col">
-          <h4>Minor Disciplines</h4>
+          <h6>Date of Joining</h6>
         </div>
-        <div class="col">
-          <h4>Date of Joining</h4>
-        </div>
-      </div>
+      <!-- </div> -->
     </div>
 
     <!-- <div class="bottom-section"> -->
@@ -129,7 +129,7 @@
       <tbody>
         <!-- {{student}} -->
         {% for add in student %}
-        <div class="container my-5">
+        <!-- <div class="container my-5"> -->
           <div class="text-center rectangle mx-auto row text-row">
             <div class="col">
               <p>{{add[0]}}</p>
@@ -162,7 +162,7 @@
             <div class="col">
               <p>{{add[9]}}</p>
             </div>
-            <div class="col">
+            <!-- <div class="col">
               <p>{{add[10]}}</p>
             </div>
             <div class="col">
@@ -170,14 +170,12 @@
             </div>
             <div class="col">
               <p>{{add[12]}}</p>
-            </div>
+            </div> -->
             <div class="col">
               <p>{{add[13]}}</p>
             </div>
-            <div class="col">
-              <p>{{add[14]}}</p>
-            </div>
-          </div>
+            
+          <!-- </div> -->
         </div>
 
         {% endfor %}
