@@ -23,7 +23,7 @@
       }
 
       .top-rec {
-        margin-top: -6%;
+        margin-top: -3%;
         width: 1850px;
         z-index: 5;
         height: 100px;
@@ -64,7 +64,7 @@
 
     <title>Student List</title>
   </head>
-  <body>
+  <body style="background-color: #edf6ff">
     <div class="top-section" width="100%">
       <!-- {{address}} -->
       <p
@@ -129,7 +129,7 @@
       <tbody>
         <!-- {{student}} -->
         {% for add in student %}
-        <!-- <div class="container my-5"> -->
+        <div class="my-5">
           <div class="text-center rectangle mx-auto row text-row">
             <div class="col">
               <p>{{add[0]}}</p>
@@ -175,7 +175,7 @@
               <p>{{add[13]}}</p>
             </div>
             
-          <!-- </div> -->
+          </div>
         </div>
 
         {% endfor %}
