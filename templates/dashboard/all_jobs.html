@@ -1,105 +1,151 @@
-<!doctype html>
-<html lang="en">
 
-<head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>All Jobs</title>
-</head>
-<body class="container" style="background-color: #132f42;">
-<div class="container">
-  <div class="card">
-    <div class = "card-body" style="background-color: #00586C" padding = "16px">
-  <div class="table-wrapper">
-    <table width="100%" style="color: #FFF">
-        <thead>
-          <!-- <div class="card" background-style="color: #FFF"> -->
-      <tr style="color: yellow"> 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      .rectangle {
+        width: 1200px;
         
-        
-        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">Job Id</div> </td>
-        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">Designation</div></td>
-        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">Location</div></td>
-        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">Current Status</div></td>
-        <td style="font-weight: bold;"><div class="d-flex flex-row align-items-center mb-4">More Details</div></td>
-          
-      
-    </tr>
-    <!-- </div>  -->
-    </thead>
-        <tbody>
-            {% for job in jobDetails %}
-        <tr>
-          <td><div class="d-flex flex-row align-items-center mb-4"> {{job[0]}} </div></td>
-          <td><div class="d-flex flex-row align-items-center mb-4">{{job[1]}} </div> </td>
-          <td><div class="d-flex flex-row align-items-center mb-4">{{job[3]}} </div> </td>
-          <td><div class="d-flex flex-row align-items-center mb-4">{{job[11]}}</div>  </td>
-          <td> <a href="/jobs/{{job[0]}}" type="button">See More</a> </td>
-          
-        </tr>
-        {% endfor %}
+        height: 100px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border-radius: 10px;
+      }
 
-                
-        </tbody>
-    </table>
-  </div>
-</div>
-</div>
-</div>
-</body>
-</html>
+      .top-rec {
+       margin-top: -6%;
+        width: 1200px;
+        z-index: 5;
+        height: 100px;
+        border:solid black 2px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border-radius: 10px;
+      }
 
-<!-- <style>
-body {
-    margin: 0;
-    background: linear-gradient(45deg, #49a09d, #dae2fd);
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 100;
-}
+      .text-row {
+        padding-top: 20px;
+      }
+      /* body {
+        background-image: linear-gradient(
+          to bottom,
+          #d6eaf8 0%,
+          #d6eaf8 50%,
+          transparent 50%,
+          transparent 100%
+        );
+      } */
 
-.container {
-  
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-  overflow-x: auto;
+      .entry {
+  overflow: hidden;
   white-space: nowrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-
-}
-.table-wrapper {
-  display: inline-block;
+  text-overflow: ellipsis;
+  width: 100px;
 }
 
-table {
-  
-    width: 1000px;
-    /* border-collapse: collapse; */
-  /* width: 100%; */
-  overflow-x: auto;
 
-    /* box-shadow: 0 0 20px rgba(0,0,0,0.1); */
-}
+      .top-section {
+        background: linear-gradient(to bottom, #6daffe 0%, #437fc7 100%);
+        height: 30vh;
+        z-index: -1;
+        position: relative;
+      }
 
-th,
-td {
-    /* padding: 5px; */
-    background-color: rgba(255,255,255,0.2);
-    color: #141414;
-}
+      
 
-th {
-    text-align: center;
-  
-}
-</style> -->
+      /* .bottom-section {
+        background-color: #f5f5f5;
+        height: 50vh;
+      } */
+    </style>
+
+    <script src="student.js"></script>
+
+    <title>Jobs List</title>
+  </head>
+  <body style="background-color: #edf6ff">
+    <div class="top-section" width="100%">
+      <!-- {{address}} -->
+      <p
+        class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"
+        style="color: #fff"
+      >
+        <br />
+        Jobs
+        <br />
+      </p>
+    </div>
+
+    
+    <div class="container my-5">
+        <div class="text-center rectangle mx-auto top-rec row text-row">
+          
+            <div class="col">
+              <h6>Job ID</h6>
+            </div>
+           
+            <div class="col">
+              <h6>Designation</h6>
+            </div>
+            <div class="col">
+              <h6>Location</h6>
+            </div>
+            <div class="col">
+              <h6>Current Status</h6>
+            </div>
+            <div class="col">
+              <h6>More Details</h6>
+            </div>
+           
+       </div>
+        </div>
+      
+   
+
+    <!-- <div class="bottom-section"> -->
+    <table width="100%" style="color: black">
+      <tbody>
+        {% for com in jobDetails %}
+        <div class="container my-5">
+          <div class="text-center rectangle mx-auto row text-row">
+            
+              <div class="col">
+                <p>{{com[0]}}</p>
+              </div>
+              <div class="col">
+                <p>{{com[1]}}</p>
+              </div>
+              <div class="col">
+                <p>{{com[3]}}</p>
+              </div>
+              <div class="col">
+                <p>{{com[11]}}</p>
+              </div>
+              <div class="col" >
+                <p><a href="/jobs/{{com[0]}}" type="button" class="btn btn-primary">See More</a> </p>
+              </div>
+              
+            </div>
+          
+        </div>
+
+        {% endfor %}
+      </tbody>
+    </table>
+    <!-- </div> -->
+  </body>
+</html>

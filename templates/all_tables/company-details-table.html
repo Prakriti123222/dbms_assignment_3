@@ -48,6 +48,14 @@
         );
       } */
 
+      .entry {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100px;
+}
+
+
       .top-section {
         background: linear-gradient(to bottom, #6daffe 0%, #437fc7 100%);
         height: 30vh;
@@ -140,7 +148,7 @@
                 <p>{{com[3]}}</p>
               </div>
               <div class="col" >
-                <p>{{com[4]}}</p>
+                <p class="entry">{{com[4]}}</p>
               </div>
               <div class="col">
                 <p>{{com[5]}}</p>
