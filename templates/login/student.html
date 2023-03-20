@@ -67,7 +67,7 @@
         </div>
 
         <div class="form-outline flex-fill mb-0 col-lg-12">
-            <input type="file" id="form3Example3c" class="form-control" name="profile_photo" />
+            <input type="file" id="form3Example3c" class="form-control" name="file" />
             <label class="form-label" for="file-upload">Profile Photo</label>
         </div>
 
@@ -109,16 +109,9 @@
                 <label class="form-label" for="form3Example3c">CPI <span style="color:red">*</span></label>
             </div>
             <!-- convert into checkbox -->
-            <div class="form-outline flex-fill mb-0 col-lg-4" style="margin:0" style="padding:0">
-                <label>
-                    <input type = 'radio' name="backlogs">
-                    Yes
-                </label>
-                <label>
-                    <input type = 'radio' name="backlogs">
-                    No
-                </label><br>
-                <label class="form-label" for="form3Example3c">Backlog(s)</label>
+            <div class="form-outline flex-fill mb-0 col-lg-6">
+                <input type="text" id="form3Example3c" class="form-control" name="backlogs" required />
+                <label class="form-label" for="form3Example3c">backlogs <span style="color:red">*</span></label>
             </div>
         </div>
 
@@ -128,17 +121,9 @@
                 <label class="form-label" for="form3Example3c">DOB <span style="color:red">*</span></label>
             </div>
 
-            <div class="form-outline flex-fill mb-0 col-lg-3">
-                <!-- <input type="text" id="form3Example3c" class="form-control" name="category" required /> -->
-                <select class="form-select" id="inputGroupSelect01" required>
-                    <option selected>Choose...</option>
-                    <option value="EWS">EWS</option>
-                    <option value="OBC">OBC</option>
-                    <option value="PWD">PWD</option>
-                    <option value="ST">ST</option>
-                    <option value="SC">SC</option>
-                  </select>
-                  <label class="form-label" for="form3Example3c">Category <span style="color:red">*</span></label>
+            <div class="form-outline flex-fill mb-0 col-lg-6">
+                <input type="text" id="form3Example3c" class="form-control" name="category" required />
+                <label class="form-label" for="form3Example3c">category <span style="color:red">*</span></label>
             </div>
 
             <div class="form-outline flex-fill mb-0 col-lg-3">
@@ -179,7 +164,7 @@
 
         <!-- take file as input here, make it required -->
         <div class="form-outline flex-fill mb-0 col-lg-12">
-            <input type="file" id="form3Example3c" class="form-control" name="resume" required/>
+            <input type="file" id="form3Example3c" class="form-control" name="rfile" required/>
             <label class="form-label" for="file-upload">Resume <span style="color:red">*</span></label>
         </div>
 

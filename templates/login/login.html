@@ -102,6 +102,12 @@ a.register{
           <li class="nav-item">
             <a href="about.html" class="nav-link">About</a>
           </li>
+          <li class="nav-item">
+            <a href="/all_tables" class="nav-link">All Tables</a>
+          </li>
+          <li class="nav-item">
+            <a href="/rename" class="nav-link">Rename</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -176,7 +182,20 @@ a.register{
     $('#year').text(new Date().getFullYear());
   </script>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    // Get the current year for the copyright
+    var err = '{{error}}';
+    if (err != ''){
+      Swal.fire(
+        err,
+        'Try Again!',
+        'error'
+      )
+    }
+   
+    $('#year').text(new Date().getFullYear());
+  </script>
 </body>
 
 </html>

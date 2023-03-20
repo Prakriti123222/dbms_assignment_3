@@ -14,25 +14,27 @@
     />
     <style>
       .rectangle {
-        width: 1200px;
-        
-        height: 100px;
+        width: 1700px;
+        height: 80px;
         background-color: #ffffff;
         box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
         padding: 10px;
-        border-radius: 10px;
+        left: 10%;
+        top: 25vh;
+        
+        
       }
 
-      .top-rec {
-       margin-top: -6%;
-        width: 1200px;
-        z-index: 5;
-        height: 100px;
-        border:solid black 2px;
-        background-color: #ffffff;
+      .top-rectangle {
+        background-color: #fff;
+        height: 80px;
+        width: 1700px;
+        position: absolute;
+        left: 10%;
+        top: 25vh;
+        margin-left: -100px;
         box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-        border-radius: 10px;
+        /* padding: 10px; */
       }
 
       .text-row {
@@ -48,18 +50,9 @@
         );
       } */
 
-      .entry {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100px;
-}
-
-
       .top-section {
         background: linear-gradient(to bottom, #6daffe 0%, #437fc7 100%);
         height: 30vh;
-        z-index: -1;
         position: relative;
       }
 
@@ -73,9 +66,9 @@
 
     <script src="student.js"></script>
 
-    <title>Jobs List</title>
+    <title>Educational Details List</title>
   </head>
-  <body style="background-color: #edf6ff">
+  <body>
     <div class="top-section" width="100%">
       <!-- {{address}} -->
       <p
@@ -83,62 +76,75 @@
         style="color: #fff"
       >
         <br />
-        Jobs
+        Educational Details
         <br />
       </p>
     </div>
 
-    
     <div class="container my-5">
-        <div class="text-center rectangle mx-auto top-rec row text-row">
-          
+      <div class="top-rectangle">
+        <div class="rectangle mx-auto">
+          <div class="row">
             <div class="col">
-              <h6>Job ID</h6>
-            </div>
-           
-            <div class="col">
-              <h6>Designation</h6>
+              <h4>Person ID</h4>
             </div>
             <div class="col">
-              <h6>Location</h6>
+              <h4>Board for Tenth</h4>
             </div>
             <div class="col">
-              <h6>Current Status</h6>
+              <h4>Board for Twelfth</h4>
             </div>
             <div class="col">
-              <h6>More Details</h6>
+              <h4>Tenth Percentage</h4>
             </div>
-           
-       </div>
+            <div class="col">
+              <h4>Twelfth Percentage</h4>
+            </div>
+            <div class="col">
+                <h4>Competitive Exam Name</h4>
+              </div>
+              <div class="col">
+                <h4>Competitive Exam Rank</h4>
+              </div>
+              
+              
+          </div>
         </div>
-      
-   
+      </div>
+    </div>
 
     <!-- <div class="bottom-section"> -->
     <table width="100%" style="color: black">
       <tbody>
-        {% for com in jobDetails %}
+        {% for edu in educational_details %}
         <div class="container my-5">
-          <div class="text-center rectangle mx-auto row text-row">
-            
+          <div class="rectangle mx-auto">
+            <div class="row text-row">
               <div class="col">
-                <p>{{com[0]}}</p>
+                <p>{{edu[0]}}</p>
               </div>
               <div class="col">
-                <p>{{com[1]}}</p>
+                <p>{{edu[1]}}</p>
               </div>
               <div class="col">
-                <p>{{com[3]}}</p>
+                <p>{{edu[2]}}</p>
               </div>
               <div class="col">
-                <p>{{com[11]}}</p>
+                <p>{{edu[3]}}</p>
               </div>
-              <div class="col" >
-                <p><a href="/jobs/{{com[0]}}" type="button" class="btn btn-primary">See More</a> </p>
+              <div class="col">
+                <p>{{edu[4]}}</p>
+              </div>
+              <div class="col">
+                <p>{{edu[5]}}</p>
+              </div>
+              <div class="col">
+                <p>{{edu[6]}}</p>
               </div>
               
+              
             </div>
-          
+          </div>
         </div>
 
         {% endfor %}
