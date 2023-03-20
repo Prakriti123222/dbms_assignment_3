@@ -1,5 +1,6 @@
 # Placement Management System
 ## Initial Setup
+link to report: https://docs.google.com/document/d/1CwXG-YVMrlRc5ur6_N1Q84dxHVPLV8_3ZzRGfVW-HmE/edit?usp=sharing 
 *Note:*     
 The recommanded version of python is python 3.8.    
 Application run on localhost:5000      
