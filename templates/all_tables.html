@@ -1,113 +1,189 @@
 <!doctype html>
 <html lang="en">
+  <style>
+    h2 {
+      text-align: center;
+      font-weight: 1000;
+      color: #151111;
+      padding: 40px;
+      font-size: 64px;
+    }
+    .row {
+      padding-left: 130px; 
+      margin: 80px;
+    }
+    .row .card {
+      width: 250px;
+      height: 250px;
+      background: #6193d1;
+      border-radius: 15px;
+      border: None;
+      box-shadow: 1px 5px 20px 0px #100a886b;
+      
+    }
+    .row .card .card-border-top {
+      width: 60%;
+      height: 3%;
+      background: #151111;
+      margin-left: 20%;
+      border-radius: 0px 0px 15px 15px;
+    }
+    .row .card span {
+      font-weight: 600;
+      color: #ffffFF;
+      text-align: center;
+      display: block;
+      padding-top: 0px;
+      font-size: 24px;
+    }
+    .row .card .job {
+      font-weight: 400;
+      color: white;
+      display: block;
+      text-align: center;
+      padding-top: 3px;
+      font-size: 12px;
+    }
+    .row .card .img {
+      width: 70px;
+      height: 80px;
+      background: #fff;
+      border-radius: 15px;
+      margin: auto;
+      margin-top: 25px;
+    }
+    .row .card .button {
+      padding: 4px 15px;
+      display: block;
+      margin: auto;
+      border-radius: 8px;
+      border: none;
+      margin-top: 10px;
+      background: #151111;
+      color: #fff;
+      font-weight: 300;
+      font-size: 12px;
+    }
+    .row .card .button:hover {
+      background: #ffffff;
+      color: #437FC7;
+    }
+
+
+  </style>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+  
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Admin Dashboard</title>
   </head>
-  <body class="container text-center">
-    <h3> SEE ALL TABLES</h3>
-
-    <div class="row">
-      <div class="card col-5" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Address</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="/address-table" class="card-link">See table</a>
-        </div>
-      </div>
-
-      <div class="col-2"></div>
-
-      <div class="card col-5" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Admin</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="/admin-table" class="card-link">See table</a>
-        </div>
-      </div>
-
-      <div class="col-2"></div>
-
-      <div class="card col-5" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Company Details</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="/company-details-table" class="card-link">See table</a>
-        </div>
-      </div>
-
-      <div class="col-2"></div>
-
+ 
+  <body style="background-color: #edf6ff">
+    <h2> See All Tables</h2>
+    <div class="container mx-auto text-center">
       <div class="row">
-        <div class="card col-5" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Educational Details</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/educational-details-table" class="card-link">See table</a>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
+            </div>
+            <div class="img">
+            </div>
+            <span>Address</span>
+            <a href="/address-table" class="button" style="text-decoration: None">See table</a>
           </div>
         </div>
-  
-        <div class="col-2"></div>
-  
-        <div class="card col-5" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">HR</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/hr-table" class="card-link">See table</a>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
+            </div>
+            <div class="img">
+            </div>
+            <span>Admin</span>
+            <a href="/admin-table" class="button" style="text-decoration: None">See table</a>
           </div>
         </div>
-  
-        <div class="col-2"></div>
-  
-        <div class="card col-5" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Job Profile</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/job-profile-table" class="card-link">See table</a>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
+            </div>
+            <div class="img">
+            </div>
+            <span>Company Details</span>
+            <a href="/company-details-table" class="button" style="text-decoration: None">See table</a>
           </div>
         </div>
-  
-        <div class="col-2"></div>
-
-        <div class="row">
-            <div class="card col-5" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Person</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/person-table" class="card-link">See table</a>
-              </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
             </div>
-      
-            <div class="col-2"></div>
-      
-            <div class="card col-5" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Program Details</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/program-details" class="card-link">See table</a>
-              </div>
+            <div class="img">
             </div>
-      
-            <div class="col-2"></div>
-      
-            <div class="card col-5" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Student</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/student-table" class="card-link">See table</a>
-              </div>
+            <span>Educational Details</span>
+            <a href="/educational-details-table" class="button" style="text-decoration: None">See table</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
             </div>
-      
-            <div class="col-2"></div>
+            <div class="img">
+            </div>
+            <span>HR</span>
+            <a href="/hr-table"class="button" style="text-decoration: None">See table</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
+            </div>
+            <div class="img">
+            </div>
+            <span>Job Profile</span>
+            <a href="/job-profile-table" class="button" style="text-decoration: None">See table</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
+            </div>
+            <div class="img">
+            </div>
+            <span>Person</span>
+            <a href="/person-table" class="button" style="text-decoration: None">See table</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
+            </div>
+            <div class="img">
+            </div>
+            <span>Program Details</span>
+            <a href="/program-details" class="button" style="text-decoration: None">See table</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-border-top">
+            </div>
+            <div class="img">
+            </div>
+            <span>Student</span>
+            <a href="/student-table" class="button" style="text-decoration: None">See table</a>
+          </div>
+        </div>
+      </div>    
     </div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     
   </body>
