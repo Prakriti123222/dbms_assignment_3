@@ -489,7 +489,7 @@ def company_table():
 @app.route('/educational-details-table')
 def educational_table():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM company_details")
+    cur.execute("SELECT * FROM educational_details")
     educational_details = cur.fetchall()
     return render_template('all_tables/educational-details-table.html', educational_details=educational_details)
 
